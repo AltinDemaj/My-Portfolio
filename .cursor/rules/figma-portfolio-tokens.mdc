@@ -1,0 +1,50 @@
+---
+description: Align Figma MCP output with this portfolio’s tokens, type, and sections (Next.js + Tailwind v4).
+globs: src/**/*.{tsx,ts,css}
+alwaysApply: false
+---
+
+# Figma ↔ my-portfolio
+
+When implementing from Figma or describing specs for Figma, use the same foundations as the live site.
+
+## Color tokens (mirror in Figma as variables)
+
+Source: `src/app/globals.css` `:root`.
+
+| Token / role | CSS | Hex (reference) |
+|--------------|-----|-----------------|
+| Background | `--background` | `#0a0a0a` |
+| Foreground | `--foreground` | `#fafafa` |
+| Muted text | `--muted` | `#71717a` |
+| Muted foreground | `--muted-foreground` | `#a1a1aa` |
+| Border | `--border` | `#27272a` |
+| Card | `--card` | `#141414` |
+| Card hover | `--card-hover` | `#1a1a1a` |
+| Accent | `--accent` | `#c9a227` |
+| Accent tint | `--accent-muted` | `rgba(201, 162, 39, 0.15)` |
+| Radius | `--radius` | `0.5rem` |
+
+Tailwind maps these via `@theme inline` (e.g. `bg-background`, `text-foreground`, `text-accent`). Prefer semantic tokens over raw hex in code.
+
+## Typography
+
+From `src/app/layout.tsx`:
+
+- Body / UI: **Geist Sans** (`--font-geist-sans`)
+- Code / mono: **Geist Mono** (`--font-geist-mono`)
+- Display / headings: **Syne** (`--font-syne`, weights 400–800)
+
+In Figma, set matching text styles and use Syne for hero/display blocks.
+
+## Page structure (section components)
+
+Under `src/components/sections/`: `Hero`, `About`, `Skills`, `Services`, `FeaturedShowcase`, `Projects`, `Contact`. Layout: `Navbar`, `Footer`, `DotFieldBackground`.
+
+When pulling Figma into code or pushing structure to Figma, keep this section order and naming where possible.
+
+## Stack notes
+
+- Next.js App Router; client components only where needed.
+- Tailwind CSS v4 with `@import "tailwindcss"` and `@theme inline` in `globals.css`.
+- Effects: `depth-section` class uses 3D-style perspective; dot field is animated in CSS (`dot-wander`).
