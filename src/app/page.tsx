@@ -14,7 +14,7 @@ export default function Home() {
   return (
     <ProjectModalProvider>
       <Navbar />
-      <div className="relative z-10 min-h-screen">
+      <div className="relative z-10 min-h-screen overflow-x-clip">
         <DotFieldBackground />
         <main className="relative z-10 pointer-events-none *:pointer-events-auto">
           <Hero />
