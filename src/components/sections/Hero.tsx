@@ -120,9 +120,10 @@ export function Hero() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="mt-5 max-w-xl text-sm leading-relaxed text-zinc-400 text-pretty sm:mt-6 sm:text-base md:text-lg"
           >
-            Building games, AR/VR experiences, and full-stack web platforms with
-            Unity, React, Next.js, and Node.js. From concept to deployment, I
-            focus on performance, usability, and polished real-world products.
+            Building games with Unity and AR/VR experiences, apps, and
+            full-stack web platforms with React, Next.js, and Node.js. From
+            concept to deployment, I focus on performance, usability, and
+            polished real-world products.
           </motion.p>
 
           <motion.div
