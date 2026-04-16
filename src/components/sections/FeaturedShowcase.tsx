@@ -328,7 +328,9 @@ export function FeaturedShowcase() {
             ) : null}
           </div>
 
-          <div className="pointer-events-auto relative z-[5] w-full p-4 sm:p-6 md:absolute md:bottom-0 md:left-0 md:right-0 md:bg-gradient-to-t md:from-zinc-950 md:via-zinc-950/95 md:to-transparent md:px-8 md:pb-8 md:pt-24">
+          <div className="pointer-events-auto relative z-[5] w-full overflow-hidden p-4 sm:p-6 md:absolute md:bottom-0 md:left-0 md:right-0 md:bg-gradient-to-t md:from-zinc-950 md:via-zinc-950/95 md:to-transparent md:px-8 md:pb-8 md:pt-24"
+            style={{ minHeight: "220px" }}
+          >
             <AnimatePresence mode="wait">
               <motion.div key={project.id} {...fade}>
                 <span
@@ -339,7 +341,7 @@ export function FeaturedShowcase() {
                 <p className="mt-2 max-w-2xl text-xs leading-relaxed text-zinc-500">
                   {project.tech.slice(0, 5).join(" · ")}
                 </p>
-                <p className="mt-1.5 max-w-none text-xs leading-relaxed text-zinc-400 text-pretty break-words sm:mt-2 sm:max-w-2xl sm:text-sm md:text-[0.9375rem]">
+                <p className="mt-1.5 max-w-none text-xs leading-relaxed text-zinc-400 line-clamp-4 text-pretty break-words sm:mt-2 sm:max-w-2xl sm:text-sm md:text-[0.9375rem]">
                   {project.description}
                 </p>
                 <FeaturedSlideCta project={project} />
