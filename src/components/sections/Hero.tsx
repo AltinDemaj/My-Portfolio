@@ -95,14 +95,14 @@ export function Hero() {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="font-display max-w-5xl text-3xl font-bold tracking-tight text-white sm:text-4xl md:text-5xl lg:text-[4.2rem]"
+            className="font-display max-w-5xl text-3xl font-bold tracking-tight text-white sm:text-4xl md:text-5xl lg:text-[4.5rem]"
             style={{
               fontFamily: "var(--font-syne), sans-serif",
               textShadow: "0 4px 24px rgba(0,0,0,0.4)",
             }}
           >
             {siteOwner.name}
-            <span className="mt-3 block text-[1.55rem] leading-[1.15] text-zinc-300 sm:mt-4 sm:text-[2.2rem] md:text-[2.8rem] lg:text-[3.4rem]">
+            <span className="mt-3 block text-[1.55rem] leading-[1.15] text-zinc-300 sm:mt-4 sm:text-[2.4rem] md:text-[3rem] lg:text-[3.7rem]">
               {HERO_ROLE_LINES.map((line) => (
                 <span
                   key={line}
