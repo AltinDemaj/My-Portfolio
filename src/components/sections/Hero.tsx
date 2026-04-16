@@ -11,8 +11,8 @@ import { siteOwner } from "@/data/portfolio";
 // Use a direct .gif URL (e.g. right‑click the GIF in the thread → Copy image address) if this page URL doesn’t load as image
 const UNITY_GIF_PATH = "/unity-editor.gif";
 const HERO_ROLE_LINES = [
-  "Unity Developer |",
-  "AR/VR Engineer |",
+  "Unity Developer",
+  "AR/VR Engineer",
   "Full-Stack Developer",
 ] as const;
 
@@ -102,13 +102,16 @@ export function Hero() {
             }}
           >
             {siteOwner.name}
-            <span className="mt-3 block text-[1.55rem] leading-[1.1] text-zinc-300 sm:mt-4 sm:text-[2.8rem] sm:leading-[0.93] md:text-[3.8rem] lg:text-[4.95rem]">
-              {HERO_ROLE_LINES.map((line) => (
+            <span className="mt-3 block text-[1.55rem] leading-[1.15] text-zinc-300 sm:mt-4 sm:text-[2.8rem] sm:leading-[1.05] md:text-[3.8rem] lg:text-[4.95rem]">
+              {HERO_ROLE_LINES.map((line, i) => (
                 <span
                   key={line}
                   className="block bg-gradient-to-r from-zinc-200 via-zinc-300 to-zinc-500 bg-clip-text text-transparent"
                 >
                   {line}
+                  {i < HERO_ROLE_LINES.length - 1 && (
+                    <span className="mx-1 text-zinc-600 sm:mx-2">|</span>
+                  )}
                 </span>
               ))}
             </span>
