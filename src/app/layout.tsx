@@ -56,7 +56,9 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${syne.variable} min-h-screen antialiased bg-[#0a0a0a] text-zinc-100`}
       >
-        {children}
+        <div className="w-full overflow-x-hidden">
+          {children}
+        </div>
       </body>
     </html>
   );
