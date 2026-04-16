@@ -13,7 +13,35 @@ export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24);
+    const sectionIds = ["home", "about", "projects", "services", "contact"];
+    let ticking = false;
+
+    const onScroll = () => {
+      setScrolled(window.scrollY > 24);
+
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        ticking = false;
+        if (window.scrollY < 100) {
+          if (window.location.hash) {
+            history.replaceState(null, "", window.location.pathname);
+          }
+          return;
+        }
+        for (let i = sectionIds.length - 1; i >= 0; i--) {
+          const el = document.getElementById(sectionIds[i]);
+          if (el && el.getBoundingClientRect().top <= 150) {
+            const newHash = `#${sectionIds[i]}`;
+            if (window.location.hash !== newHash) {
+              history.replaceState(null, "", newHash);
+            }
+            break;
+          }
+        }
+      });
+    };
+
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
