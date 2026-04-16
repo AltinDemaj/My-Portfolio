@@ -253,6 +253,7 @@ function ProjectCard({
                 src={project.image}
                 alt=""
                 draggable={false}
+                loading="lazy"
                 className={`absolute inset-0 z-[1] h-full w-full object-cover ${thumbnailObjectClass(project.thumbnailObjectPosition)} transition-transform duration-500 group-hover:scale-105`}
               />
               {project.thumbnailOverlay ? (
@@ -309,10 +310,10 @@ function ProjectCard({
   if (opensModal) {
     return (
       <motion.article
-        initial={{ opacity: 0, y: 24 }}
+        initial={{ opacity: 0, y: 12 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-40px" }}
-        transition={{ duration: 0.4, delay: index * 0.05 }}
+        viewport={{ once: true, margin: "200px" }}
+        transition={{ duration: 0.3 }}
         className={`group cursor-pointer ${compact ? "flex h-full min-h-0 flex-col" : ""}`}
         style={{ perspective: "800px" }}
         onClick={(e) => {
@@ -337,10 +338,10 @@ function ProjectCard({
   if (!linkHref) {
     return (
       <motion.article
-        initial={{ opacity: 0, y: 24 }}
+        initial={{ opacity: 0, y: 12 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-40px" }}
-        transition={{ duration: 0.4, delay: index * 0.05 }}
+        viewport={{ once: true, margin: "200px" }}
+        transition={{ duration: 0.3 }}
         className={`group ${compact ? "flex h-full min-h-0 flex-col" : ""}`}
         style={{ perspective: "800px" }}
       >
@@ -351,10 +352,10 @@ function ProjectCard({
 
   return (
     <motion.article
-      initial={{ opacity: 0, y: 24 }}
+      initial={{ opacity: 0, y: 12 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-40px" }}
-      transition={{ duration: 0.4, delay: index * 0.05 }}
+      viewport={{ once: true, margin: "200px" }}
+      transition={{ duration: 0.3 }}
       className={`group ${compact ? "flex h-full min-h-0 flex-col" : ""}`}
       style={{ perspective: "800px" }}
     >
@@ -558,11 +559,15 @@ function GameEmbedBlock({
 
       {showFullView && (
         <div className="fixed inset-0 z-[60] flex flex-col bg-black">
-          <div className="absolute right-2 top-2 z-10 sm:right-4 sm:top-4">
+          <div className="absolute right-2 top-2 z-[100] sm:right-4 sm:top-4">
             <button
               type="button"
               onClick={handleCloseFullView}
-              className="rounded-lg bg-black/70 px-3 py-2 text-xs font-medium text-white backdrop-blur-sm transition-colors hover:bg-white/20 sm:text-sm"
+              onTouchEnd={(e) => {
+                e.preventDefault();
+                handleCloseFullView();
+              }}
+              className="min-h-[44px] min-w-[44px] rounded-lg bg-black/70 px-4 py-3 text-sm font-medium text-white backdrop-blur-sm transition-colors hover:bg-white/20 active:bg-white/30"
               aria-label="Close"
             >
               Close (Esc)
@@ -856,9 +861,11 @@ function ProjectCarousel({
   const [canScroll, setCanScroll] = useState(false);
   const [mounted, setMounted] = useState(false);
   const dragState = useRef({ isDown: false, startX: 0, scrollLeft: 0, moved: false });
+  const [isTouch, setIsTouch] = useState(false);
 
   useEffect(() => {
     setMounted(true);
+    setIsTouch("ontouchstart" in window || navigator.maxTouchPoints > 0);
   }, []);
 
   useEffect(() => {
@@ -880,16 +887,17 @@ function ProjectCarousel({
   }, [mounted, categoryProjects.length]);
 
   const onMouseDown = useCallback((e: React.MouseEvent) => {
+    if (isTouch) return;
     const el = scrollRef.current;
     if (!el) return;
     dragState.current = { isDown: true, startX: e.pageX - el.offsetLeft, scrollLeft: el.scrollLeft, moved: false };
     el.style.scrollSnapType = "none";
     el.style.cursor = "grabbing";
     el.style.scrollBehavior = "auto";
-  }, []);
+  }, [isTouch]);
 
   const onMouseMove = useCallback((e: React.MouseEvent) => {
-    if (!dragState.current.isDown) return;
+    if (isTouch || !dragState.current.isDown) return;
     e.preventDefault();
     const el = scrollRef.current;
     if (!el) return;
@@ -897,16 +905,17 @@ function ProjectCarousel({
     const walk = x - dragState.current.startX;
     if (Math.abs(walk) > 5) dragState.current.moved = true;
     el.scrollLeft = dragState.current.scrollLeft - walk;
-  }, []);
+  }, [isTouch]);
 
   const onMouseUp = useCallback(() => {
+    if (isTouch) return;
     dragState.current.isDown = false;
     const el = scrollRef.current;
     if (!el) return;
     el.style.scrollSnapType = "x mandatory";
     el.style.cursor = "";
     el.style.scrollBehavior = "";
-  }, []);
+  }, [isTouch]);
 
   return (
     <div className="relative w-full">
@@ -932,9 +941,10 @@ function ProjectCarousel({
               className="flex scroll-snap-start flex-shrink-0 w-[200px] min-w-[200px] sm:w-[240px] sm:min-w-[240px] md:w-[260px] md:min-w-[260px] lg:w-[280px] lg:min-w-[280px]"
               style={{ scrollSnapAlign: "start" }}
               onClickCapture={(e) => {
-                if (dragState.current.moved) {
+                if (!isTouch && dragState.current.moved) {
                   e.stopPropagation();
                   e.preventDefault();
+                  dragState.current.moved = false;
                 }
               }}
             >
