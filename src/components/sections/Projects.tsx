@@ -855,6 +855,7 @@ function ProjectCarousel({
   const scrollRef = useRef<HTMLDivElement>(null);
   const [canScroll, setCanScroll] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const dragState = useRef({ isDown: false, startX: 0, scrollLeft: 0, moved: false });
 
   useEffect(() => {
     setMounted(true);
@@ -878,16 +879,49 @@ function ProjectCarousel({
     };
   }, [mounted, categoryProjects.length]);
 
+  const onMouseDown = useCallback((e: React.MouseEvent) => {
+    const el = scrollRef.current;
+    if (!el) return;
+    dragState.current = { isDown: true, startX: e.pageX - el.offsetLeft, scrollLeft: el.scrollLeft, moved: false };
+    el.style.scrollSnapType = "none";
+    el.style.cursor = "grabbing";
+    el.style.scrollBehavior = "auto";
+  }, []);
+
+  const onMouseMove = useCallback((e: React.MouseEvent) => {
+    if (!dragState.current.isDown) return;
+    e.preventDefault();
+    const el = scrollRef.current;
+    if (!el) return;
+    const x = e.pageX - el.offsetLeft;
+    const walk = x - dragState.current.startX;
+    if (Math.abs(walk) > 5) dragState.current.moved = true;
+    el.scrollLeft = dragState.current.scrollLeft - walk;
+  }, []);
+
+  const onMouseUp = useCallback(() => {
+    dragState.current.isDown = false;
+    const el = scrollRef.current;
+    if (!el) return;
+    el.style.scrollSnapType = "x mandatory";
+    el.style.cursor = "";
+    el.style.scrollBehavior = "";
+  }, []);
+
   return (
     <div className="relative w-full">
       <div
         ref={scrollRef}
-        className="overflow-x-auto overflow-y-hidden py-2 pb-2 scroll-smooth [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        className="overflow-x-auto overflow-y-hidden py-2 pb-2 scroll-smooth [scrollbar-width:none] [&::-webkit-scrollbar]:hidden cursor-grab select-none"
         style={{
           scrollSnapType: "x mandatory",
           WebkitOverflowScrolling: "touch",
           scrollPaddingRight: "2.5rem",
         }}
+        onMouseDown={onMouseDown}
+        onMouseMove={onMouseMove}
+        onMouseUp={onMouseUp}
+        onMouseLeave={onMouseUp}
       >
         {/* Extra end padding so the last card can scroll fully clear of the viewport + edge fade */}
         <div className="flex gap-3 sm:gap-6 pr-32 sm:pr-40 md:pr-48">
@@ -897,6 +931,12 @@ function ProjectCarousel({
               data-carousel-card
               className="flex scroll-snap-start flex-shrink-0 w-[200px] min-w-[200px] sm:w-[240px] sm:min-w-[240px] md:w-[260px] md:min-w-[260px] lg:w-[280px] lg:min-w-[280px]"
               style={{ scrollSnapAlign: "start" }}
+              onClickCapture={(e) => {
+                if (dragState.current.moved) {
+                  e.stopPropagation();
+                  e.preventDefault();
+                }
+              }}
             >
               <ProjectCard
                 project={project}
