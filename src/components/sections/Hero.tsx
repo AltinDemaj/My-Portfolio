@@ -11,8 +11,8 @@ import { siteOwner } from "@/data/portfolio";
 // Use a direct .gif URL (e.g. right‑click the GIF in the thread → Copy image address) if this page URL doesn’t load as image
 const UNITY_GIF_PATH = "/unity-editor.gif";
 const HERO_ROLE_LINES = [
-  "Unity Developer",
-  "AR/VR Engineer",
+  "Unity Developer |",
+  "AR/VR Developer |",
   "Full-Stack Developer",
 ] as const;
 
@@ -95,23 +95,20 @@ export function Hero() {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="font-display max-w-5xl text-3xl font-bold tracking-tight text-white sm:text-5xl md:text-6xl lg:text-[4.9rem]"
+            className="font-display max-w-5xl text-3xl font-bold tracking-tight text-white sm:text-4xl md:text-5xl lg:text-[3.5rem]"
             style={{
               fontFamily: "var(--font-syne), sans-serif",
               textShadow: "0 4px 24px rgba(0,0,0,0.4)",
             }}
           >
             {siteOwner.name}
-            <span className="mt-3 block text-[1.55rem] leading-[1.15] text-zinc-300 sm:mt-4 sm:text-[2.8rem] sm:leading-[1.05] md:text-[3.8rem] lg:text-[4.95rem]">
-              {HERO_ROLE_LINES.map((line, i) => (
+            <span className="mt-3 block text-[1.55rem] leading-[1.1] text-zinc-300 sm:mt-4 sm:text-[2rem] sm:leading-[0.95] md:text-[2.6rem] lg:text-[3.2rem]">
+              {HERO_ROLE_LINES.map((line) => (
                 <span
                   key={line}
                   className="block bg-gradient-to-r from-zinc-200 via-zinc-300 to-zinc-500 bg-clip-text text-transparent"
                 >
                   {line}
-                  {i < HERO_ROLE_LINES.length - 1 && (
-                    <span className="mx-1 text-zinc-600 sm:mx-2">|</span>
-                  )}
                 </span>
               ))}
             </span>

@@ -19,20 +19,20 @@ const syne = Syne({
 });
 
 export const metadata: Metadata = {
-  title: "Altin Demaj | Unity Developer, AR/VR Engineer, Full-Stack Developer",
+  title: "Altin Demaj | Unity Developer, AR/VR Developer, Full-Stack Developer",
   description:
-    "Altin Demaj is a Unity Developer, AR/VR Engineer, and Full-Stack Developer building games, immersive experiences, and modern web platforms from concept to launch.",
+    "Altin Demaj is a Unity Developer, AR/VR Developer, and Full-Stack Developer building games, immersive experiences, and modern web platforms from concept to launch.",
   applicationName: "Altin Demaj Portfolio",
   keywords: [
     "Altin Demaj",
     "Unity Developer",
-    "AR/VR Engineer",
+    "AR/VR Developer",
     "Full-Stack Developer",
     "Next.js Portfolio",
     "Game Developer Kosovo",
   ],
   openGraph: {
-    title: "Altin Demaj | Unity Developer, AR/VR Engineer, Full-Stack Developer",
+    title: "Altin Demaj | Unity Developer, AR/VR Developer, Full-Stack Developer",
     description:
       "Portfolio of Altin Demaj featuring Unity games, AR/VR concepts, full-stack web apps, and interactive demos.",
     type: "website",
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Altin Demaj | Unity Developer, AR/VR Engineer, Full-Stack Developer",
+    title: "Altin Demaj | Unity Developer, AR/VR Developer, Full-Stack Developer",
     description:
       "Portfolio of Altin Demaj featuring Unity games, AR/VR concepts, full-stack web apps, and interactive demos.",
   },

@@ -17,7 +17,7 @@ import { resumeData, siteOwner } from "@/data/portfolio";
 export const metadata = {
   title: "Resume — Altin Demaj",
   description:
-    "Resume for Altin Demaj: Unity Developer, AR/VR Engineer, and Full-Stack Developer.",
+    "Resume for Altin Demaj: Unity Developer, AR/VR Developer, and Full-Stack Developer.",
 };
 
 export default function ResumePage() {

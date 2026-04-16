@@ -574,7 +574,7 @@ export const services: Service[] = [
 
 export const siteOwner = {
   name: "Altin Demaj",
-  title: "Unity Developer | AR/VR Engineer | Full-Stack Developer",
+  title: "Unity Developer | AR/VR Developer | Full-Stack Developer",
   location: "Prishtine, Kosovo",
   email: "altindemaj.dev@gmail.com",
   phone: "+38349405430",
@@ -582,7 +582,7 @@ export const siteOwner = {
 
 export const resumeData = {
   headline: "Altin Demaj",
-  role: "Unity Developer | AR/VR Engineer | Full-Stack Developer",
+  role: "Unity Developer | AR/VR Developer | Full-Stack Developer",
   summary:
     "Highly skilled Unity Developer and Full-Stack Engineer with 5+ years of experience building interactive applications across games, AR/VR experiences, and modern web platforms. Proven ability to design and deliver complete products from concept to deployment, including multiplayer games, mobile experiences, real-time systems, business dashboards, and scalable web applications.",
   summarySecondary:
