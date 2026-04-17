@@ -578,6 +578,7 @@ export const siteOwner = {
   location: "Prishtine, Kosovo",
   email: "altindemaj.dev@gmail.com",
   phone: "+38349405430",
+  website: "https://altindemaj.com",
 } as const;
 
 export const resumeData = {
@@ -738,6 +739,7 @@ export const resumeData = {
     "English — Professional working proficiency",
   ],
   additionalInfo: [
+    "Portfolio website: altindemaj.com — live demos, case studies, and project highlights",
     "Strong problem-solving and system design skills",
     "Able to work independently and deliver complete products",
     "Comfortable across both creative development (games / AR / VR) and business systems (web / apps)",

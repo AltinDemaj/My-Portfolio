@@ -6,6 +6,7 @@ import {
   Code2,
   FileText,
   FolderKanban,
+  Globe,
   GraduationCap,
   Languages,
   Mail,
@@ -13,6 +14,7 @@ import {
   Phone,
 } from "lucide-react";
 import { resumeData, siteOwner } from "@/data/portfolio";
+import { ResumeDownloadPdfButton } from "@/components/resume/ResumeDownloadPdfLazy";
 
 export const metadata = {
   title: "Resume — Altin Demaj",
@@ -21,10 +23,12 @@ export const metadata = {
 };
 
 export default function ResumePage() {
+  const websiteHost = siteOwner.website.replace(/^https?:\/\//, "").replace(/\/$/, "");
+
   return (
-    <main className="min-h-screen bg-[#0a0a0a] px-4 py-10 text-zinc-100 sm:px-6 md:px-8">
+    <main className="resume-print-root min-h-screen bg-[#0a0a0a] px-4 py-10 text-zinc-100 print:min-h-0 print:bg-[#0a0a0a] print:px-2 print:py-4 sm:px-6 md:px-8">
       <div className="mx-auto max-w-6xl">
-        <div className="mb-8 flex flex-wrap items-center justify-between gap-4">
+        <div className="mb-8 flex flex-wrap items-center justify-between gap-4 print:hidden">
           <Link
             href="/"
             className="inline-flex items-center gap-2 rounded-lg border border-zinc-800 bg-zinc-900/50 px-4 py-2.5 text-sm font-medium text-zinc-300 transition-colors hover:border-zinc-700 hover:text-white"
@@ -32,16 +36,22 @@ export default function ResumePage() {
             <ArrowLeft className="h-4 w-4" />
             Back to portfolio
           </Link>
-          <a
-            href={`mailto:${siteOwner.email}`}
-            className="inline-flex items-center gap-2 rounded-lg bg-white px-4 py-2.5 text-sm font-semibold text-black transition-colors hover:bg-zinc-200"
-          >
-            <Mail className="h-4 w-4" />
-            Contact me
-          </a>
+          <div className="flex flex-wrap items-center gap-3">
+            <ResumeDownloadPdfButton />
+            <a
+              href={`mailto:${siteOwner.email}`}
+              className="inline-flex items-center gap-2 rounded-lg bg-white px-4 py-2.5 text-sm font-semibold text-black transition-colors hover:bg-zinc-200"
+            >
+              <Mail className="h-4 w-4" />
+              Contact me
+            </a>
+          </div>
         </div>
 
-        <section className="overflow-hidden rounded-3xl border border-zinc-800 bg-zinc-950/80 shadow-2xl shadow-black/30">
+        <section
+          id="resume-pdf-export"
+          className="overflow-hidden rounded-3xl border border-zinc-800 bg-zinc-950/80 shadow-2xl shadow-black/30 print:rounded-2xl print:shadow-none"
+        >
           <div className="border-b border-zinc-800 bg-gradient-to-br from-zinc-900 to-zinc-950 px-6 py-8 sm:px-8 sm:py-10">
             <div className="grid gap-8 lg:grid-cols-[1.4fr_0.8fr] lg:items-start">
               <div>
@@ -81,6 +91,17 @@ export default function ResumePage() {
                   <p className="flex items-center gap-3">
                     <Phone className="h-4 w-4 text-zinc-500" />
                     {siteOwner.phone}
+                  </p>
+                  <p className="flex items-center gap-3">
+                    <Globe className="h-4 w-4 shrink-0 text-zinc-500" />
+                    <a
+                      href={siteOwner.website}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-zinc-200 underline decoration-zinc-600 underline-offset-2 transition-colors hover:text-white hover:decoration-zinc-400"
+                    >
+                      {websiteHost}
+                    </a>
                   </p>
                   <p className="flex items-center gap-3">
                     <BriefcaseBusiness className="h-4 w-4 text-zinc-500" />

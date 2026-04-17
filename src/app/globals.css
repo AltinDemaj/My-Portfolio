@@ -125,3 +125,21 @@ body {
   width: 100% !important;
   height: 100% !important;
 }
+
+/* Resume: print / Save as PDF — preserve on-screen colors and layout */
+@media print {
+  @page {
+    margin: 10mm;
+  }
+
+  html,
+  body {
+    background: #0a0a0a !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .resume-print-root {
+    color: #fafafa;
+  }
+}

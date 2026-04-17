@@ -12,14 +12,16 @@
     "capture:dashboard-studio": "node scripts/capture-dashboard-studio-screenshots.mjs"
   },
   "dependencies": {
-    "@formspree/react": "^3.0.0",
     "d3-delaunay": "^6.0.4",
     "framer-motion": "^12.36.0",
+    "html-to-image": "^1.11.13",
+    "jspdf": "^4.2.1",
     "lucide-react": "^0.577.0",
     "next": "16.1.6",
     "react": "19.2.3",
     "react-dom": "19.2.3",
-    "recharts": "^3.8.1"
+    "recharts": "^3.8.1",
+    "resend": "^6.12.0"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
