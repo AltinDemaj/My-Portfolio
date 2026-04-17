@@ -30,6 +30,28 @@ function isResendHostedSandboxSender(from: string): boolean {
   return addr != null && addr.endsWith("@resend.dev");
 }
 
+function senderEmailDomain(addr: string): string {
+  const i = addr.lastIndexOf("@");
+  return i >= 0 ? addr.slice(i + 1) : "";
+}
+
+/**
+ * Optional: set `RESEND_VERIFIED_SENDING_DOMAIN=altindemaj.com` (no @) on your host so a wrong
+ * `RESEND_FROM_EMAIL` is rejected before calling Resend (common misconfiguration after DNS verify).
+ */
+function verifiedSendingDomainMismatch(from: string): string | null {
+  const want = process.env.RESEND_VERIFIED_SENDING_DOMAIN?.trim().toLowerCase();
+  if (!want) return null;
+  const addr = parseFromEmailAddress(from);
+  if (!addr) {
+    return "RESEND_FROM_EMAIL must include a valid email (e.g. Portfolio <you@yourdomain.com>).";
+  }
+  const got = senderEmailDomain(addr);
+  const ok = got === want || got.endsWith(`.${want}`);
+  if (ok) return null;
+  return `RESEND_FROM_EMAIL must use your verified domain @${want}. The configured sender uses @${got || "?"}. Fix it in your host environment variables (e.g. Vercel) and redeploy.`;
+}
+
 function coalesceResendError(err: unknown): { message: string; name?: string } {
   if (!err || typeof err !== "object") {
     return { message: typeof err === "string" ? err : "Unknown error" };
@@ -38,6 +60,16 @@ function coalesceResendError(err: unknown): { message: string; name?: string } {
   const name = typeof o.name === "string" ? o.name : undefined;
   if (typeof o.message === "string" && o.message.length > 0) {
     return { message: o.message, name };
+  }
+  const nested = o.error;
+  if (nested && typeof nested === "object") {
+    const ne = nested as Record<string, unknown>;
+    if (typeof ne.message === "string" && ne.message.length > 0) {
+      return {
+        message: ne.message,
+        name: typeof ne.name === "string" ? ne.name : name,
+      };
+    }
   }
   const errors = o.errors;
   if (Array.isArray(errors) && errors.length > 0) {
@@ -97,6 +129,23 @@ function resendSendUserMessage(error: { message?: string; name?: string }): {
     };
   }
 
+  if (
+    lower.includes("suppression") ||
+    lower.includes("suppressed") ||
+    lower.includes("bounce") ||
+    lower.includes("complaint")
+  ) {
+    return {
+      message:
+        "Resend will not send to this address (bounce, complaint, or suppression list). Try another inbox or remove the block in Resend → Suppressions.",
+      status: 403,
+    };
+  }
+
+  if (raw.length > 0 && raw !== "Email provider returned an error.") {
+    return { message: raw, status: 502 };
+  }
+
   return {
     message: "Could not send the verification email. Try again later.",
     status: 502,
@@ -143,13 +192,18 @@ export async function POST(req: Request) {
     );
   }
 
+  const domainMismatch = verifiedSendingDomainMismatch(from);
+  if (domainMismatch) {
+    return NextResponse.json({ error: domainMismatch }, { status: 503 });
+  }
+
   const code = generateSixDigitCode();
   const token = createPendingToken(secret, email, code, PENDING_MAX_AGE_S * 1000);
 
   const resend = new Resend(apiKey);
   const { error } = await resend.emails.send({
     from,
-    to: email,
+    to: [email],
     subject: "Your portfolio contact verification code",
     text: `Your verification code is: ${code}\n\nIt expires in ${PENDING_MAX_AGE_S / 60} minutes. If you did not request this, you can ignore this email.`,
   });
@@ -158,7 +212,9 @@ export async function POST(req: Request) {
     console.error("Resend error:", error);
     const normalized = coalesceResendError(error);
     const { message, status } = resendSendUserMessage(normalized);
-    return NextResponse.json({ error: message }, { status });
+    const body: { error: string; resendCode?: string } = { error: message };
+    if (normalized.name) body.resendCode = normalized.name;
+    return NextResponse.json(body, { status });
   }
 
   const res = NextResponse.json({ ok: true });

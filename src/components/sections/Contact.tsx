@@ -68,9 +68,14 @@ export function Contact() {
         credentials: "same-origin",
         body: JSON.stringify({ email: email.trim() }),
       });
-      const data = (await res.json().catch(() => ({}))) as { error?: string };
+      const data = (await res.json().catch(() => ({}))) as {
+        error?: string;
+        resendCode?: string;
+      };
       if (!res.ok) {
-        setSendError(data.error ?? "Could not send the code.");
+        const base = data.error ?? "Could not send the code.";
+        const hint = data.resendCode ? `\n(Resend: ${data.resendCode})` : "";
+        setSendError(base + hint);
         return;
       }
       setCodeSent(true);
@@ -308,7 +313,7 @@ export function Contact() {
                     )}
                   </div>
                   {sendError ? (
-                    <p className="text-sm text-red-400" role="alert">
+                    <p className="whitespace-pre-line text-sm text-red-400" role="alert">
                       {sendError}
                     </p>
                   ) : null}
