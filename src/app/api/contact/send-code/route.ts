@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
+import { contactCookieOptions } from "@/lib/contact-cookie-options";
 import {
   createPendingToken,
   generateSixDigitCode,
@@ -14,6 +15,43 @@ function isValidEmail(email: string): boolean {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim());
 }
 
+/** Extract bare email from `Name <addr@domain>` or `addr@domain`. */
+function parseFromEmailAddress(from: string): string | null {
+  const t = from.trim();
+  const angle = t.match(/<([^>]+)>/);
+  const raw = (angle ? angle[1] : t).trim().toLowerCase();
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(raw)) return null;
+  return raw;
+}
+
+/** Resend-hosted @resend.dev senders stay in testing mode (only your account inbox). */
+function isResendHostedSandboxSender(from: string): boolean {
+  const addr = parseFromEmailAddress(from);
+  return addr != null && addr.endsWith("@resend.dev");
+}
+
+function coalesceResendError(err: unknown): { message: string; name?: string } {
+  if (!err || typeof err !== "object") {
+    return { message: typeof err === "string" ? err : "Unknown error" };
+  }
+  const o = err as Record<string, unknown>;
+  const name = typeof o.name === "string" ? o.name : undefined;
+  if (typeof o.message === "string" && o.message.length > 0) {
+    return { message: o.message, name };
+  }
+  const errors = o.errors;
+  if (Array.isArray(errors) && errors.length > 0) {
+    const first = errors[0];
+    if (first && typeof first === "object") {
+      const fe = first as Record<string, unknown>;
+      if (typeof fe.message === "string" && fe.message.length > 0) {
+        return { message: fe.message, name };
+      }
+    }
+  }
+  return { message: "Email provider returned an error.", name };
+}
+
 /** Map Resend API errors to actionable copy (sandbox / domain issues are common). */
 function resendSendUserMessage(error: { message?: string; name?: string }): {
   message: string;
@@ -22,6 +60,14 @@ function resendSendUserMessage(error: { message?: string; name?: string }): {
   const raw = (error.message ?? "").trim();
   const lower = raw.toLowerCase();
   const name = error.name ?? "";
+
+  if (name === "invalid_region" || lower.includes("invalid_region")) {
+    return {
+      message:
+        "Resend reported a region mismatch for this send. In the Resend dashboard, open your domain and confirm its region matches your account; if it persists, contact Resend support with the timestamp of this request.",
+      status: 403,
+    };
+  }
 
   if (name === "invalid_from_address" || lower.includes("invalid from")) {
     return {
@@ -87,6 +133,16 @@ export async function POST(req: Request) {
     );
   }
 
+  if (isResendHostedSandboxSender(from)) {
+    return NextResponse.json(
+      {
+        error:
+          "RESEND_FROM_EMAIL still uses a Resend test address (@resend.dev), so codes can only reach your own Resend login email. Set RESEND_FROM_EMAIL to an address on your verified domain (for example Portfolio <hello@yourdomain.com>) in your host’s environment variables, redeploy, then try again.",
+      },
+      { status: 503 },
+    );
+  }
+
   const code = generateSixDigitCode();
   const token = createPendingToken(secret, email, code, PENDING_MAX_AGE_S * 1000);
 
@@ -100,18 +156,13 @@ export async function POST(req: Request) {
 
   if (error) {
     console.error("Resend error:", error);
-    const { message, status } = resendSendUserMessage(error);
+    const normalized = coalesceResendError(error);
+    const { message, status } = resendSendUserMessage(normalized);
     return NextResponse.json({ error: message }, { status });
   }
 
   const res = NextResponse.json({ ok: true });
-  res.cookies.set(COOKIE_PENDING, token, {
-    httpOnly: true,
-    secure: process.env.NODE_ENV === "production",
-    sameSite: "lax",
-    path: "/",
-    maxAge: PENDING_MAX_AGE_S,
-  });
+  res.cookies.set(COOKIE_PENDING, token, contactCookieOptions(PENDING_MAX_AGE_S));
 
   return res;
 }

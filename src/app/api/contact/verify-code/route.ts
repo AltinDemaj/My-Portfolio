@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { cookies } from "next/headers";
+import { contactCookieOptions } from "@/lib/contact-cookie-options";
 import {
   codeMatchesPending,
   createVerifiedToken,
@@ -42,7 +43,7 @@ export async function POST(req: Request) {
   const pending = parsePendingToken(secret, pendingRaw);
   if (!pending) {
     const res = NextResponse.json({ error: "Code expired or invalid session. Request a new code." }, { status: 400 });
-    res.cookies.set(COOKIE_PENDING, "", { path: "/", maxAge: 0 });
+    res.cookies.set(COOKIE_PENDING, "", contactCookieOptions(0));
     return res;
   }
 
@@ -53,14 +54,8 @@ export async function POST(req: Request) {
   const verifiedToken = createVerifiedToken(secret, pending.email, VERIFIED_MAX_AGE_S * 1000);
 
   const res = NextResponse.json({ ok: true, email: pending.email });
-  res.cookies.set(COOKIE_PENDING, "", { path: "/", maxAge: 0 });
-  res.cookies.set(COOKIE_VERIFIED, verifiedToken, {
-    httpOnly: true,
-    secure: process.env.NODE_ENV === "production",
-    sameSite: "lax",
-    path: "/",
-    maxAge: VERIFIED_MAX_AGE_S,
-  });
+  res.cookies.set(COOKIE_PENDING, "", contactCookieOptions(0));
+  res.cookies.set(COOKIE_VERIFIED, verifiedToken, contactCookieOptions(VERIFIED_MAX_AGE_S));
 
   return res;
 }

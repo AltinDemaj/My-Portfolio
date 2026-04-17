@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { cookies } from "next/headers";
+import { contactCookieOptions } from "@/lib/contact-cookie-options";
 import { parseVerifiedToken } from "@/lib/contact-tokens";
 
 export const runtime = "nodejs";
@@ -61,7 +62,7 @@ export async function POST(req: Request) {
       { error: "Verification expired. Request a new code and verify again." },
       { status: 403 },
     );
-    res.cookies.set(COOKIE_VERIFIED, "", { path: "/", maxAge: 0 });
+    res.cookies.set(COOKIE_VERIFIED, "", contactCookieOptions(0));
     return res;
   }
 
@@ -98,6 +99,6 @@ export async function POST(req: Request) {
   }
 
   const res = NextResponse.json({ ok: true });
-  res.cookies.set(COOKIE_VERIFIED, "", { path: "/", maxAge: 0 });
+  res.cookies.set(COOKIE_VERIFIED, "", contactCookieOptions(0));
   return res;
 }
