@@ -1,11 +1,6 @@
 import { NextResponse } from "next/server";
-import { cookies } from "next/headers";
-import { contactCookieOptions } from "@/lib/contact-cookie-options";
-import { parseVerifiedToken } from "@/lib/contact-tokens";
 
 export const runtime = "nodejs";
-
-const COOKIE_VERIFIED = "contact_verified";
 
 const FORMSPREE_DEFAULT = "xjgjgjdq";
 
@@ -14,11 +9,6 @@ function isValidEmail(email: string): boolean {
 }
 
 export async function POST(req: Request) {
-  const secret = process.env.CONTACT_VERIFY_SECRET;
-  if (!secret || secret.length < 16) {
-    return NextResponse.json({ error: "Not configured" }, { status: 503 });
-  }
-
   let body: { name?: string; email?: string; message?: string };
   try {
     body = await req.json();
@@ -47,32 +37,6 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: "Message is too long." }, { status: 400 });
   }
 
-  const jar = await cookies();
-  const verifiedRaw = jar.get(COOKIE_VERIFIED)?.value;
-  if (!verifiedRaw) {
-    return NextResponse.json(
-      { error: "Verify your email first using the code we sent you." },
-      { status: 403 },
-    );
-  }
-
-  const verified = parseVerifiedToken(secret, verifiedRaw);
-  if (!verified) {
-    const res = NextResponse.json(
-      { error: "Verification expired. Request a new code and verify again." },
-      { status: 403 },
-    );
-    res.cookies.set(COOKIE_VERIFIED, "", contactCookieOptions(0));
-    return res;
-  }
-
-  if (email.toLowerCase() !== verified.email) {
-    return NextResponse.json(
-      { error: "Use the same email address you verified." },
-      { status: 403 },
-    );
-  }
-
   const formId = process.env.FORMSPREE_FORM_ID ?? FORMSPREE_DEFAULT;
   const fsRes = await fetch(`https://formspree.io/f/${formId}`, {
     method: "POST",
@@ -98,7 +62,5 @@ export async function POST(req: Request) {
     );
   }
 
-  const res = NextResponse.json({ ok: true });
-  res.cookies.set(COOKIE_VERIFIED, "", contactCookieOptions(0));
-  return res;
+  return NextResponse.json({ ok: true });
 }
