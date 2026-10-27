@@ -418,12 +418,12 @@ function SiteEmbedBlock({ project }: { project: ProjectType }) {
           </p>
         )}
         <a
-          href={url}
+          href={project.liveUrl ?? url}
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex shrink-0 items-center justify-center gap-1.5 rounded-lg border border-zinc-600 bg-zinc-800/80 px-3 py-2 text-sm font-medium text-zinc-200 transition-colors hover:bg-zinc-700 hover:text-white sm:self-start"
         >
-          Open demo in new tab
+          {project.ctaLabel?.trim() || "Open demo in new tab"}
           <ExternalLink className="h-4 w-4" aria-hidden />
         </a>
       </div>
@@ -805,6 +805,22 @@ function ProjectDetailModalBody({
               </span>
             ))}
           </div>
+
+          {project.liveUrl?.startsWith("http") &&
+            !project.embedUrl &&
+            !project.liveUrl.includes("itch.io") && (
+              <div className="mt-6">
+                <a
+                  href={project.liveUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-2 rounded-lg bg-white px-4 py-2.5 text-sm font-semibold text-black transition-colors hover:bg-zinc-200"
+                >
+                  {project.ctaLabel?.trim() || "Open live project"}
+                  <ExternalLink className="h-4 w-4" aria-hidden />
+                </a>
+              </div>
+            )}
 
           {project.liveUrl?.startsWith("http") &&
             project.liveUrl.includes("itch.io") && (

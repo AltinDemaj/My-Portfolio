@@ -11,8 +11,8 @@ const highlights = [
   },
   {
     icon: Zap,
-    value: "Full pipeline",
-    label: "Design to launch & publishing",
+    value: "Ship faster",
+    label: "AI-assisted workflows, production quality",
   },
   {
     icon: Users,
@@ -53,11 +53,11 @@ export function About() {
               Experience
             </h2>
             <p className="mt-4 text-sm leading-relaxed text-zinc-400 text-pretty break-words sm:text-base">
-              Application Developer with advanced skills in game development,
-              cross-functional collaboration, and shipping high-quality
-              experiences. From prototyping and user testing to performance
-              optimization and platform publishing — I focus on stability,
-              clean code, and player satisfaction.
+              Full-stack developer leading with React, Next.js, TypeScript, and
+              Ruby on Rails. I use AI-assisted workflows to go from spec to
+              production quickly while keeping architecture and code review
+              disciplined. Unity and AR/VR are a strong secondary focus for games
+              and immersive prototypes.
             </p>
             <ul className="mt-6 space-y-2 text-sm text-zinc-500">
               {experienceBullets.slice(0, 5).map((bullet, i) => (
