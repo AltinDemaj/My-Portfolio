@@ -12,7 +12,7 @@ const highlights = [
   {
     icon: Zap,
     value: "Ship faster",
-    label: "AI-assisted workflows, production quality",
+    label: "AI engineering in production products",
   },
   {
     icon: Users,
@@ -53,11 +53,11 @@ export function About() {
               Experience
             </h2>
             <p className="mt-4 text-sm leading-relaxed text-zinc-400 text-pretty break-words sm:text-base">
-              Full-stack developer leading with React, Next.js, TypeScript, and
-              Ruby on Rails. I use AI-assisted workflows to go from spec to
-              production quickly while keeping architecture and code review
-              disciplined. Unity and AR/VR are a strong secondary focus for games
-              and immersive prototypes.
+              Full-stack and AI engineer leading with React, Next.js,
+              TypeScript, and Ruby on Rails — building intelligent product
+              features with disciplined architecture and code review. Unity and
+              AR/VR are a strong secondary focus for games and immersive
+              prototypes.
             </p>
             <ul className="mt-6 space-y-2 text-sm text-zinc-500">
               {experienceBullets.slice(0, 5).map((bullet, i) => (

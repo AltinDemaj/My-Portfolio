@@ -19,13 +19,15 @@ const syne = Syne({
 });
 
 export const metadata: Metadata = {
-  title: "Altin Demaj | Full-Stack Developer · React & Next.js · Ruby on Rails",
+  title: "Altin Demaj | Full-Stack & AI Engineer · React & Next.js · Ruby on Rails",
   description:
-    "Altin Demaj is a full-stack developer building React, Next.js, and Ruby on Rails products — with AI-assisted workflows, plus Unity and AR/VR for games and immersive work.",
+    "Altin Demaj is a full-stack and AI engineer building React, Next.js, Ruby on Rails, and AI-powered products — plus Unity and AR/VR for games and immersive work.",
   applicationName: "Altin Demaj Portfolio",
   keywords: [
     "Altin Demaj",
     "Full-Stack Developer",
+    "AI Engineer",
+    "AI Engineering",
     "React Developer",
     "Next.js Developer",
     "Ruby on Rails",
@@ -33,17 +35,17 @@ export const metadata: Metadata = {
     "Game Developer Kosovo",
   ],
   openGraph: {
-    title: "Altin Demaj | Full-Stack Developer · React & Next.js · Ruby on Rails",
+    title: "Altin Demaj | Full-Stack & AI Engineer · React & Next.js · Ruby on Rails",
     description:
-      "Portfolio of Altin Demaj — full-stack web apps, Ruby on Rails, AI-assisted delivery, Unity games, and AR/VR work.",
+      "Portfolio of Altin Demaj — full-stack web apps, AI engineering, Ruby on Rails, Unity games, and AR/VR work.",
     type: "website",
     locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Altin Demaj | Full-Stack Developer · React & Next.js · Ruby on Rails",
+    title: "Altin Demaj | Full-Stack & AI Engineer · React & Next.js · Ruby on Rails",
     description:
-      "Portfolio of Altin Demaj — full-stack web apps, Ruby on Rails, AI-assisted delivery, Unity games, and AR/VR work.",
+      "Portfolio of Altin Demaj — full-stack web apps, AI engineering, Ruby on Rails, Unity games, and AR/VR work.",
   },
 };
 

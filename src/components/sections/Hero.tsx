@@ -12,7 +12,7 @@ const UNITY_GIF_PATH = "/unity-editor.gif";
 const BADGES = [
   { icon: Code2, label: "Full-Stack Web" },
   { icon: Layers, label: "React · Next.js" },
-  { icon: Sparkles, label: "AI-assisted dev" },
+  { icon: Sparkles, label: "AI Engineer" },
   { icon: Gamepad2, label: "Unity & AR/VR" },
 ] as const;
 
@@ -100,9 +100,9 @@ export function Hero() {
                 className="inline-flex items-center gap-1.5 rounded-full border border-zinc-600/40 bg-black/40 px-3 py-1 text-[12px] font-medium text-zinc-300 backdrop-blur-md"
               >
                 <Icon
-                  className={`h-3 w-3 ${label === "Full-Stack Web" ? "text-amber-400/80" : "text-zinc-400"}`}
+                  className={`h-3 w-3 ${label === "AI Engineer" ? "text-amber-400/80" : "text-zinc-400"}`}
                 />
-                {label === "Full-Stack Web" ? (
+                {label === "AI Engineer" ? (
                   <span className="bg-gradient-to-r from-amber-400/90 to-yellow-300/90 bg-clip-text text-transparent">
                     {label}
                   </span>
@@ -138,11 +138,10 @@ export function Hero() {
               textShadow: "0 2px 10px rgba(0,0,0,0.5)",
             }}
           >
-            <span className="text-zinc-100">Full-Stack </span>
+            <span className="text-zinc-100">Full-Stack & </span>
             <span className="bg-gradient-to-r from-amber-400 via-yellow-300 to-amber-500 bg-clip-text text-transparent drop-shadow-[0_2px_8px_rgba(200,160,40,0.3)]">
-              Web
+              AI Engineer
             </span>
-            <span className="text-zinc-100"> Developer</span>
           </motion.p>
 
           {/* Secondary line */}
@@ -156,6 +155,8 @@ export function Hero() {
             React · Next.js · TypeScript
             <span className="mx-2.5 text-zinc-600">•</span>
             Ruby on Rails
+            <span className="mx-2.5 text-zinc-600">•</span>
+            AI Engineering
             <span className="mx-2.5 text-zinc-600">•</span>
             Unity & AR/VR
           </motion.p>
@@ -176,9 +177,9 @@ export function Hero() {
             className="mt-7 max-w-lg text-[0.875rem] leading-[1.8] text-zinc-300 text-pretty sm:mt-8 sm:text-[0.9375rem] md:text-base"
             style={{ textShadow: "0 1px 6px rgba(0,0,0,0.3)" }}
           >
-            I build production web products with React, Next.js, TypeScript, and
-            Ruby on Rails — using AI-assisted workflows to ship faster without
-            skipping review. Unity games and AR/VR are part of my toolkit when a
+            I build production web and AI products with React, Next.js,
+            TypeScript, and Ruby on Rails — shipping reliable features from APIs
+            to interfaces. Unity games and AR/VR are part of my toolkit when a
             product needs immersive interaction.
           </motion.p>
 

@@ -20,7 +20,7 @@ import { ResumeDownloadPdfButton } from "@/components/resume/ResumeDownloadPdfLa
 export const metadata = {
   title: "Resume — Altin Demaj",
   description:
-    "Resume for Altin Demaj: Full-Stack Developer (React, Next.js, Ruby on Rails).",
+    "Resume for Altin Demaj: Full-Stack & AI Engineer (React, Next.js, Ruby on Rails).",
 };
 
 export default function ResumePage() {

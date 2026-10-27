@@ -689,7 +689,7 @@ export const services: Service[] = [
 
 export const siteOwner = {
   name: "Altin Demaj",
-  title: "Full-Stack Developer | React & Next.js | Ruby on Rails",
+  title: "Full-Stack & AI Engineer | React & Next.js | Ruby on Rails",
   location: "Prishtine, Kosovo",
   email: "altindemaj.dev@gmail.com",
   phone: "+38349405430",
@@ -698,9 +698,9 @@ export const siteOwner = {
 
 export const resumeData = {
   headline: "Altin Demaj",
-  role: "Full-Stack Developer · React & Next.js · Ruby on Rails",
+  role: "Full-Stack & AI Engineer · React & Next.js · Ruby on Rails",
   summary:
-    "Full-stack engineer with 7+ years shipping production web apps, APIs, and client-facing products. I lead with React, Next.js, and TypeScript, backed by Ruby on Rails and Node when the stack calls for it. I use AI-assisted workflows to move from spec to deployed code faster while keeping reviews, tests, and architecture disciplined.",
+    "Full-stack and AI engineer with 7+ years shipping production web apps, APIs, and intelligent product features. I lead with React, Next.js, and TypeScript, backed by Ruby on Rails and Node when the stack calls for it — integrating AI capabilities into real user flows with solid architecture, testing, and review.",
   summarySecondary:
     "Recent work includes retail POS software, competitive PC tooling (BoostX), choreographer portfolios, and a Poki-published multiplayer tower-defense game. I also build Unity games and AR/VR experiences as a secondary specialty — multiplayer systems, festival activations, and immersive prototypes.",
   experienceYears: "7+ years",
@@ -754,9 +754,10 @@ export const resumeData = {
       ],
     },
     {
-      title: "Delivery & AI-assisted development",
+      title: "AI Engineering",
       items: [
-        "AI-assisted workflows from spec to production",
+        "LLM integration and AI-powered product features",
+        "Prompt design, evaluation, and production guardrails",
         "System architecture and code review",
         "Third-party SDK and API integration",
         "Real-time and GPS-backed interfaces",
@@ -869,7 +870,7 @@ export const resumeData = {
   ],
   additionalInfo: [
     "Portfolio website: altindemaj.com — live demos, case studies, and project highlights",
-    "Ruby / Rails and AI-assisted workflows for faster, reviewable delivery",
+    "Full-stack and AI engineering across web, APIs, and production systems",
     "Strong problem-solving and system design skills",
     "Able to work independently and deliver complete products",
     "Comfortable across both creative development (games / AR / VR) and business systems (web / apps)",
@@ -883,7 +884,7 @@ export const skills = [
   "TypeScript",
   "Ruby",
   "Ruby on Rails",
-  "AI-Assisted Workflows",
+  "AI Engineering",
   "Node.js",
   "PostgreSQL",
   "Unity",
