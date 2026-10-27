@@ -26,6 +26,13 @@ const TARGETS = [
     fullPage: false,
   },
   {
+    name: "boostx-landing",
+    url: "https://boostx-azure.vercel.app/",
+    viewport: { width: 1280, height: 800 },
+    waitMs: 3500,
+    fullPage: false,
+  },
+  {
     name: "minions-vs-bloons-game",
     url: "https://idle-resources-managment.vercel.app/",
     viewport: { width: 1280, height: 720 },

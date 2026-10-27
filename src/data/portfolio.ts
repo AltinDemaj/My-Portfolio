@@ -90,6 +90,7 @@ const STUDIO_DEMO_EMBED_URL =
 
 const MARKETI_JUAJ_POS_URL =
   "https://marketi-juaj-hxpvbduvm-altindemajs-projects.vercel.app";
+const BOOSTX_WEBSITE_URL = "https://boostx-azure.vercel.app";
 const MINIONS_VS_BLOONS_POKI_URL =
   "https://poki.com/en/preview/440ab299-5122-4d1b-afd8-bd50ebeed224/551d707e-8405-465a-b7cb-0787232fcea4";
 
@@ -114,7 +115,7 @@ export const projects: Project[] = [
       "Browser-based register for Balkan retailers: Albanian-language cashier UI with barcode or keyboard search, category product grid, and a live ticket with per-line quantity, weight-based items, and VAT breakdown. Staff complete checkout from desktop, tablet, or phone — built for counter speed with scanner, scale, and receipt printer workflows.",
     category: "Web",
     tech: ["Next.js", "TypeScript", "PostgreSQL", "Real-time APIs"],
-    image: "/images/projects/marketi-juaj-pos-landing.png",
+    image: "/images/projects/marketi-juaj-pos-hero.png",
     thumbnailObjectPosition: "center",
     liveUrl: MARKETI_JUAJ_POS_URL,
     embedUrl: MARKETI_JUAJ_POS_URL,
@@ -128,13 +129,13 @@ export const projects: Project[] = [
     ],
     screenshotGallery: [
       {
-        src: "/images/projects/marketi-juaj-pos-landing.png",
+        src: "/images/projects/marketi-juaj-pos-hero.png",
         title: "Mobile register view",
         description:
           "Green cashier UI tuned for phones and tablets at the counter — search, categories, and live ticket.",
       },
       {
-        src: "/images/projects/marketi-juaj-pos-landing-desktop.png",
+        src: "/images/projects/marketi-juaj-pos-hero-desktop.png",
         title: "Desktop layout",
         description:
           "Wider register layout with the same ticket flow for back-office and counter displays.",
@@ -148,17 +149,25 @@ export const projects: Project[] = [
       "Marketing site and product story for BoostX — a Windows desktop app that helps competitive FPS players scan hardware, apply reversible system tweaks, benchmark Counter-Strike 2 with PresentMon when available, and follow vendor-specific BIOS checklists without touching firmware from the app.",
     category: "Web",
     tech: ["React", "TypeScript", "Vite", "Vercel"],
-    image: "/images/projects/boostx-dashboard.png",
-    thumbnailObjectPosition: "center",
-    liveUrl: "https://boostx-azure.vercel.app",
-    embedUrl: "https://boostx-azure.vercel.app",
+    image: "/images/projects/boostx-landing.png",
+    thumbnailObjectPosition: "top",
+    liveUrl: BOOSTX_WEBSITE_URL,
+    embedUrl: BOOSTX_WEBSITE_URL,
     embedType: "site",
-    ctaLabel: "View site",
+    ctaLabel: "Visit BoostX website",
     modalHighlights: [
       "Explains the scan → tweak → benchmark → BIOS guide workflow end to end",
       "Interactive tweak demo mirroring the desktop toggle UX (preview only)",
       "CS2-oriented metrics: average FPS, 1% / 0.1% lows, frametime jitter",
       "Safety messaging: per-tweak revert, restore points, and unsigned-build guidance",
+    ],
+    screenshotGallery: [
+      {
+        src: "/images/projects/boostx-landing.png",
+        title: "Marketing landing",
+        description:
+          "Hero and product story for the Windows optimizer — scan, tweak, benchmark, and BIOS guidance flows.",
+      },
     ],
   },
   {

@@ -386,35 +386,26 @@ function SiteEmbedBlock({ project }: { project: ProjectType }) {
     ? "Interactive demo served from this portfolio — runs in your browser with no separate backend (see project description for what is simulated)."
     : isLoopback
       ? "Demo URL points at a local dev server. Ensure it is running, or set NEXT_PUBLIC_PIZZA_DEMO_URL to a deployed app."
-      : "Hosted demo — open in a new tab for the full experience (recommended on mobile).";
+      : "Hosted demo — interact in the frame below, or open in a new tab if your browser blocks embedding.";
 
   return (
     <div className="mt-10">
       <h3 className="mb-3 font-display text-sm font-semibold uppercase tracking-wider text-zinc-500">
         Live demo
       </h3>
-      <a
-        href={openHref}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="mb-4 flex w-full items-center justify-center gap-2 rounded-xl border border-zinc-600 bg-zinc-800 px-4 py-3.5 text-sm font-semibold text-white transition-colors hover:border-zinc-500 hover:bg-zinc-700 md:hidden"
-      >
-        {ctaText}
-        <ExternalLink className="h-4 w-4 shrink-0" aria-hidden />
-      </a>
-      <div className="relative mx-auto hidden w-full max-w-4xl overflow-hidden rounded-xl border border-zinc-800 bg-zinc-950 shadow-xl md:block">
+      <div className="relative mx-auto w-full max-w-4xl overflow-hidden rounded-xl border border-zinc-800 bg-zinc-950 shadow-xl">
         <div className="relative w-full" style={{ paddingBottom: "56.25%" }}>
           <iframe
             title={`${project.title} — live demo`}
             src={url}
             className="absolute inset-0 h-full w-full border-0 bg-zinc-950"
-            sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-modals"
+            sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-modals allow-popups-to-escape-sandbox"
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
           />
         </div>
       </div>
-      <div className="mt-3 flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+      <div className="mt-3 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
         <p className="max-w-xl text-xs leading-relaxed text-zinc-500">
           {helperText}
           {isLoopback ? (
@@ -430,10 +421,10 @@ function SiteEmbedBlock({ project }: { project: ProjectType }) {
           href={openHref}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex shrink-0 items-center justify-center gap-1.5 rounded-lg border border-zinc-600 bg-zinc-800/80 px-3 py-2 text-sm font-medium text-zinc-200 transition-colors hover:bg-zinc-700 hover:text-white sm:self-start"
+          className="inline-flex shrink-0 items-center gap-1 text-xs font-medium text-zinc-400 underline-offset-2 transition-colors hover:text-zinc-200 hover:underline sm:self-start"
         >
-          <span className="md:inline">{ctaText}</span>
-          <ExternalLink className="h-4 w-4" aria-hidden />
+          {ctaText}
+          <ExternalLink className="h-3.5 w-3.5" aria-hidden />
         </a>
       </div>
     </div>
