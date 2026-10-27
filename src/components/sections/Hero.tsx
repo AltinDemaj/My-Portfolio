@@ -190,7 +190,7 @@ export function Hero() {
             className="mt-7 flex flex-wrap items-center gap-x-5 gap-y-2.5 sm:mt-8"
           >
             {[
-              { icon: Clock, value: "5+", label: "Years Experience" },
+              { icon: Clock, value: "7+", label: "Years Experience" },
               { icon: Layers, value: "20+", label: "Projects Delivered" },
             ].map(({ icon: Icon, value, label }) => (
               <span

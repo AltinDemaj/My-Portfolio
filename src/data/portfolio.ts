@@ -700,10 +700,10 @@ export const resumeData = {
   headline: "Altin Demaj",
   role: "Full-Stack Developer · React & Next.js · Ruby on Rails",
   summary:
-    "Full-stack engineer with 5+ years shipping production web apps, APIs, and client-facing products. I lead with React, Next.js, and TypeScript, backed by Ruby on Rails and Node when the stack calls for it. I use AI-assisted workflows to move from spec to deployed code faster while keeping reviews, tests, and architecture disciplined.",
+    "Full-stack engineer with 7+ years shipping production web apps, APIs, and client-facing products. I lead with React, Next.js, and TypeScript, backed by Ruby on Rails and Node when the stack calls for it. I use AI-assisted workflows to move from spec to deployed code faster while keeping reviews, tests, and architecture disciplined.",
   summarySecondary:
     "Recent work includes retail POS software, competitive PC tooling (BoostX), choreographer portfolios, and a Poki-published multiplayer tower-defense game. I also build Unity games and AR/VR experiences as a secondary specialty — multiplayer systems, festival activations, and immersive prototypes.",
-  experienceYears: "5+ years",
+  experienceYears: "7+ years",
   experience: [
     {
       role: "Unity Developer",
