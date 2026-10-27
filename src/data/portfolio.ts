@@ -60,6 +60,17 @@ export function projectOpensDetailModal(project: Project): boolean {
   return !!(project.embedUrl || project.screenshotGallery?.length);
 }
 
+/** True when the detail modal includes an embedded live demo (site iframe or playable embed). */
+export function projectHasEmbeddedLiveDemo(project: Project): boolean {
+  const url = project.embedUrl?.trim();
+  if (!url) return false;
+  return (
+    project.embedType === "site" ||
+    project.embedType === "game" ||
+    project.embedType === "video"
+  );
+}
+
 /** Grouped by category for the Projects section: Unity, Web/Apps, AR/VR */
 export const projectCategories: { label: string; category: ProjectCategory }[] = [
   { label: "Web Projects & Apps", category: "Web" },

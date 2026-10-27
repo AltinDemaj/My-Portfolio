@@ -23,6 +23,7 @@ export function Navbar() {
       ticking = true;
       requestAnimationFrame(() => {
         ticking = false;
+        if (projectModal?.isOpen) return;
         if (window.scrollY < 100) {
           if (window.location.hash) {
             history.replaceState(null, "", window.location.pathname);
@@ -44,7 +45,7 @@ export function Navbar() {
 
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  }, [projectModal?.isOpen]);
 
   if (projectModal?.isOpen) {
     return null;

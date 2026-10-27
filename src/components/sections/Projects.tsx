@@ -21,6 +21,7 @@ import {
 import {
   projects,
   projectCategories,
+  projectHasEmbeddedLiveDemo,
   projectOpensDetailModal,
 } from "@/data/portfolio";
 import type { Project as ProjectType } from "@/data/portfolio";
@@ -230,6 +231,56 @@ function ProjectCard({
       ? rawHref
       : null;
   const opensModal = projectOpensDetailModal(project) && !!onClick;
+  const hasLiveDemo = projectHasEmbeddedLiveDemo(project);
+  const showCardLiveDemo = opensModal && (hasLiveDemo || !!onClick);
+  const externalLabel = project.ctaLabel?.trim() || "Open project";
+  const liveDemoLabel = hasLiveDemo ? "Live demo" : "View project";
+
+  const cardActions =
+    showCardLiveDemo && linkHref ? (
+      <div
+        className={`mt-auto flex flex-col gap-2 ${compact ? "mt-2 sm:mt-2" : "mt-3"}`}
+        onClick={(e) => e.stopPropagation()}
+        onKeyDown={(e) => e.stopPropagation()}
+      >
+        <button
+          type="button"
+          className={`inline-flex w-full items-center justify-center gap-1.5 rounded-lg border border-zinc-600 bg-zinc-800/90 font-medium text-zinc-100 transition-colors hover:border-zinc-500 hover:bg-zinc-700 ${compact ? "px-2 py-2 text-[11px] sm:text-xs" : "px-3 py-2 text-sm"}`}
+          onClick={() => onClick?.()}
+        >
+          {liveDemoLabel}
+          <Play className="h-3.5 w-3.5 shrink-0" aria-hidden />
+        </button>
+        <a
+          href={linkHref}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={`inline-flex w-full items-center justify-center gap-1.5 font-medium text-zinc-400 transition-colors hover:text-white ${compact ? "text-[11px] sm:text-xs" : "text-sm"}`}
+        >
+          {externalLabel}
+          <ExternalLink className="h-3.5 w-3.5 shrink-0" aria-hidden />
+        </a>
+      </div>
+    ) : showCardLiveDemo ? (
+      <button
+        type="button"
+        className={`mt-auto inline-flex shrink-0 items-center gap-1 font-medium text-zinc-400 transition-colors group-hover:text-white ${compact ? "mt-2 text-[11px] sm:mt-2 sm:text-sm" : "mt-3 text-sm"}`}
+        onClick={(e) => {
+          e.stopPropagation();
+          onClick?.();
+        }}
+      >
+        {liveDemoLabel}
+        <Play className="h-3.5 w-3.5 sm:h-4 sm:w-4" aria-hidden />
+      </button>
+    ) : (
+      <span
+        className={`mt-auto inline-flex shrink-0 items-center gap-1 font-medium text-zinc-400 transition-colors group-hover:text-white ${compact ? "mt-2 text-[11px] sm:mt-2 sm:text-sm" : "mt-3 text-sm"}`}
+      >
+        {externalLabel}
+        <ArrowUpRight className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
+      </span>
+    );
 
   const content = (
     <>
@@ -299,10 +350,7 @@ function ProjectCard({
               </span>
             ))}
           </div>
-          <span className={`mt-auto inline-flex shrink-0 items-center gap-1 font-medium text-zinc-400 transition-colors group-hover:text-white ${compact ? "mt-2 text-[11px] sm:mt-2 sm:text-sm" : "mt-3 text-sm"}`}>
-            {project.ctaLabel ?? "View Project"}
-            <ArrowUpRight className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
-          </span>
+          {cardActions}
         </div>
       </div>
     </>
@@ -1019,6 +1067,7 @@ export function Projects() {
 
   const openModal = useCallback((project: ProjectType) => {
     setModalProject(project);
+    if (isProjectModalHistoryState(window.history.state)) return;
     const url =
       window.location.pathname +
       window.location.search +
@@ -1036,11 +1085,10 @@ export function Projects() {
   }, [pendingOpenProjectId, clearPendingOpenProject, openModal]);
 
   const closeModal = useCallback(() => {
+    setModalProject(null);
     if (isProjectModalHistoryState(window.history.state)) {
       window.history.back();
-      return;
     }
-    setModalProject(null);
   }, []);
 
   return (
