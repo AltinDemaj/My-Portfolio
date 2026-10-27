@@ -25,6 +25,7 @@ import {
 } from "@/data/portfolio";
 import type { Project as ProjectType } from "@/data/portfolio";
 import { useProjectModal } from "@/contexts/ProjectModalContext";
+import { ConfidentialProject } from "@/components/sections/ConfidentialProject";
 
 const PROJECT_MODAL_HISTORY_KEY = "portfolioProjectModal" as const;
 
@@ -375,16 +376,33 @@ function ProjectCard({
 function SiteEmbedBlock({ project }: { project: ProjectType }) {
   const url = project.embedUrl?.trim();
   if (!url) return null;
+  const openHref = project.liveUrl ?? url;
+  const ctaText = project.ctaLabel?.trim() || "Open demo in new tab";
   const isBuiltinPath = url.startsWith("/");
   const isLoopback =
     url.includes("127.0.0.1") || url.includes("localhost");
+
+  const helperText = isBuiltinPath
+    ? "Interactive demo served from this portfolio — runs in your browser with no separate backend (see project description for what is simulated)."
+    : isLoopback
+      ? "Demo URL points at a local dev server. Ensure it is running, or set NEXT_PUBLIC_PIZZA_DEMO_URL to a deployed app."
+      : "Hosted demo — open in a new tab for the full experience (recommended on mobile).";
 
   return (
     <div className="mt-10">
       <h3 className="mb-3 font-display text-sm font-semibold uppercase tracking-wider text-zinc-500">
         Live demo
       </h3>
-      <div className="relative mx-auto w-full max-w-4xl overflow-hidden rounded-xl border border-zinc-800 bg-zinc-950 shadow-xl">
+      <a
+        href={openHref}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="mb-4 flex w-full items-center justify-center gap-2 rounded-xl border border-zinc-600 bg-zinc-800 px-4 py-3.5 text-sm font-semibold text-white transition-colors hover:border-zinc-500 hover:bg-zinc-700 md:hidden"
+      >
+        {ctaText}
+        <ExternalLink className="h-4 w-4 shrink-0" aria-hidden />
+      </a>
+      <div className="relative mx-auto hidden w-full max-w-4xl overflow-hidden rounded-xl border border-zinc-800 bg-zinc-950 shadow-xl md:block">
         <div className="relative w-full" style={{ paddingBottom: "56.25%" }}>
           <iframe
             title={`${project.title} — live demo`}
@@ -397,33 +415,24 @@ function SiteEmbedBlock({ project }: { project: ProjectType }) {
         </div>
       </div>
       <div className="mt-3 flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
-        {isBuiltinPath ? (
-          <p className="max-w-xl text-xs leading-relaxed text-zinc-500">
-            Interactive demo served from this portfolio — runs in your browser
-            with no separate backend (see project description for what is
-            simulated).
-          </p>
-        ) : isLoopback ? (
-          <p className="max-w-xl text-xs leading-relaxed text-zinc-500">
-            Demo URL points at a local dev server. Ensure it is running, or set{" "}
-            <code className="rounded bg-zinc-800 px-1 text-zinc-300">
-              NEXT_PUBLIC_PIZZA_DEMO_URL
-            </code>{" "}
-            to a deployed app.
-          </p>
-        ) : (
-          <p className="max-w-xl text-xs leading-relaxed text-zinc-500">
-            Hosted demo — use the frame below or open in a new tab if your
-            browser blocks embedding.
-          </p>
-        )}
+        <p className="max-w-xl text-xs leading-relaxed text-zinc-500">
+          {helperText}
+          {isLoopback ? (
+            <>
+              {" "}
+              <code className="rounded bg-zinc-800 px-1 text-zinc-300">
+                NEXT_PUBLIC_PIZZA_DEMO_URL
+              </code>
+            </>
+          ) : null}
+        </p>
         <a
-          href={project.liveUrl ?? url}
+          href={openHref}
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex shrink-0 items-center justify-center gap-1.5 rounded-lg border border-zinc-600 bg-zinc-800/80 px-3 py-2 text-sm font-medium text-zinc-200 transition-colors hover:bg-zinc-700 hover:text-white sm:self-start"
         >
-          {project.ctaLabel?.trim() || "Open demo in new tab"}
+          <span className="md:inline">{ctaText}</span>
           <ExternalLink className="h-4 w-4" aria-hidden />
         </a>
       </div>
@@ -1065,6 +1074,8 @@ export function Projects() {
             Unity games, web apps, and AR/VR work.
           </p>
         </motion.div>
+
+        <ConfidentialProject />
 
         {projectCategories.map(({ label, category }, catIndex) => {
           const categoryProjects = projects.filter((p) => p.category === category);

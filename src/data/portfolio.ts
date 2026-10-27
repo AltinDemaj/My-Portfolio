@@ -93,6 +93,19 @@ const MARKETI_JUAJ_POS_URL =
 const MINIONS_VS_BLOONS_POKI_URL =
   "https://poki.com/en/preview/440ab299-5122-4d1b-afd8-bd50ebeed224/551d707e-8405-465a-b7cb-0787232fcea4";
 
+export const confidentialProject = {
+  title: "Confidential venture",
+  tagline: "In development · Kosovo",
+  body:
+    "Altin is currently building what aims to be the largest technology initiative in Kosovo. The work is confidential: no public name, roadmap, or product details are shared online.",
+  rightsNotice:
+    "All rights to the idea, concept, and related work are fully owned and reserved by Altin Demaj. The project may not be copied, reproduced, or reverse-engineered from any public materials.",
+  inquiryNote:
+    "Further information is available only in person, for qualified investors and strategic partners.",
+  contactHref: "#contact",
+  contactLabel: "Request a conversation",
+} as const;
+
 export const projects: Project[] = [
   {
     id: "marketi-juaj-pos",
@@ -101,7 +114,7 @@ export const projects: Project[] = [
       "Browser-based register for Balkan retailers: Albanian-language cashier UI with barcode or keyboard search, category product grid, and a live ticket with per-line quantity, weight-based items, and VAT breakdown. Staff complete checkout from desktop, tablet, or phone — built for counter speed with scanner, scale, and receipt printer workflows.",
     category: "Web",
     tech: ["Next.js", "TypeScript", "PostgreSQL", "Real-time APIs"],
-    image: "/images/projects/marketi-pos-cover.svg",
+    image: "/images/projects/marketi-juaj-pos-landing.png",
     thumbnailObjectPosition: "center",
     liveUrl: MARKETI_JUAJ_POS_URL,
     embedUrl: MARKETI_JUAJ_POS_URL,
@@ -115,33 +128,19 @@ export const projects: Project[] = [
     ],
     screenshotGallery: [
       {
-        src: "/images/projects/marketi-pos-cover.svg",
-        title: "Cashier-first layout",
+        src: "/images/projects/marketi-juaj-pos-landing.png",
+        title: "Mobile register view",
         description:
-          "Large tap targets and a single-column ticket keep checkout readable on tablets and desktops at the register.",
+          "Green cashier UI tuned for phones and tablets at the counter — search, categories, and live ticket.",
+      },
+      {
+        src: "/images/projects/marketi-juaj-pos-landing-desktop.png",
+        title: "Desktop layout",
+        description:
+          "Wider register layout with the same ticket flow for back-office and counter displays.",
       },
     ],
   },
-  {
-    id: "minions-vs-bloons",
-    title: "Minions vs Bloons",
-    description:
-      "Tower-defense game published on Poki: place yellow minion defenders, pop waves of bloons, and branch upgrades across three paths per unit. Solo mode runs 80 escalating waves. Versus pits two players on separate boards with a live view of the opponent’s lane. Co-op shares one map so both players coordinate defense in real time.",
-    category: "Web",
-    tech: ["Unity", "C#", "WebGL", "Multiplayer", "Poki"],
-    image: "/images/projects/minions-vs-bloons-cover.svg",
-    thumbnailObjectPosition: "center",
-    liveUrl: MINIONS_VS_BLOONS_POKI_URL,
-    ctaLabel: "Play on Poki",
-    modalHighlights: [
-      "Core loop: deploy minions, target bloon paths, spend currency on three-path upgrades",
-      "Solo — survive 80 waves with escalating pressure and build variety",
-      "Versus — dual boards; each player sees their own field and the opponent’s board live",
-      "Co-op — one shared map with synchronized multiplayer defense",
-      "Shipped for browser play on Poki with real-time session sync",
-    ],
-  },
-  // AR/VR,
   {
     id: "boostx-pc-optimizer",
     title: "BoostX",
@@ -160,6 +159,33 @@ export const projects: Project[] = [
       "Interactive tweak demo mirroring the desktop toggle UX (preview only)",
       "CS2-oriented metrics: average FPS, 1% / 0.1% lows, frametime jitter",
       "Safety messaging: per-tweak revert, restore points, and unsigned-build guidance",
+    ],
+  },
+  {
+    id: "minions-vs-bloons",
+    title: "Minions vs Bloons",
+    description:
+      "Tower-defense game published on Poki: place yellow minion defenders, pop waves of bloons, and branch upgrades across three paths per unit. Solo mode runs 80 escalating waves. Versus pits two players on separate boards with a live view of the opponent’s lane. Co-op shares one map so both players coordinate defense in real time.",
+    category: "Web",
+    tech: ["Unity", "C#", "WebGL", "Multiplayer", "Poki"],
+    image: "/images/projects/minions-vs-bloons-game.png",
+    thumbnailObjectPosition: "center",
+    liveUrl: MINIONS_VS_BLOONS_POKI_URL,
+    ctaLabel: "Play on Poki",
+    modalHighlights: [
+      "Core loop: deploy minions, target bloon paths, spend currency on three-path upgrades",
+      "Solo — survive 80 waves with escalating pressure and build variety",
+      "Versus — dual boards; each player sees their own field and the opponent’s board live",
+      "Co-op — one shared map with synchronized multiplayer defense",
+      "Shipped for browser play on Poki with real-time session sync",
+    ],
+    screenshotGallery: [
+      {
+        src: "/images/projects/minions-vs-bloons-game.png",
+        title: "In-game view",
+        description:
+          "Tower-defense board with minion units, bloon paths, and upgrade paths — browser build preview.",
+      },
     ],
   },
   {
@@ -776,6 +802,12 @@ export const resumeData = {
   ],
   projectHighlights: [
     {
+      title: "Confidential venture (Kosovo)",
+      category: "Stealth / Founder-led",
+      description:
+        "Building what aims to be the largest technology initiative in Kosovo. Confidential — all idea, concept, and related rights owned and reserved by Altin Demaj; not for reproduction. Details shared in person with serious investors and partners only.",
+    },
+    {
       title: "The Seventh Mask",
       category: "Unity / Steam release pipeline",
       description:
@@ -849,6 +881,7 @@ export const resumeData = {
     },
   ],
   portfolioHighlights: [
+    "Confidential venture (Kosovo)",
     "The Seventh Mask",
     "BoostX",
     "Robert Nuha — Portfolio",
