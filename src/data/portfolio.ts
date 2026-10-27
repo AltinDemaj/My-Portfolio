@@ -419,7 +419,116 @@ export const projects: Project[] = [
       },
     ],
   },
+  {
+    id: "robert-nuha-portfolio",
+    title: "Robert Nuha — Portfolio",
+    description:
+      "Production portfolio for choreographer Robert Nuha (NOA): biography, education, international career, and a filterable archive of dance-theatre works — including premieres such as After The War, Who Are We?! across Pristina, Tirana, Skopje, Paris, and Brussels. Built as a fast, editorial Next.js site with bilingual-friendly layout and clear contact paths for bookings and press.",
+    category: "Web",
+    tech: ["Next.js", "TypeScript", "Tailwind CSS", "Vercel"],
+    image: "/images/projects/robertnuha-hero.jpg",
+    thumbnailObjectPosition: "center",
+    liveUrl: "https://robertnuha.com",
+    embedUrl: "https://robertnuha.com",
+    embedType: "site",
+    ctaLabel: "Visit site",
+    modalHighlights: [
+      "Hero spotlight for current premieres with links to full performance detail",
+      "Structured CV: education, resident roles, awards, and international credits",
+      "Performance archive with filters (performances, workshops, festivals, company)",
+      "Contact block with email and phone for professional inquiries",
+    ],
+  },
+  {
+    id: "boostx-pc-optimizer",
+    title: "BoostX",
+    description:
+      "Marketing site and product story for BoostX — a Windows desktop app that helps competitive FPS players scan hardware, apply reversible system tweaks, benchmark Counter-Strike 2 with PresentMon when available, and follow vendor-specific BIOS checklists without touching firmware from the app.",
+    category: "Web",
+    tech: ["React", "TypeScript", "Vite", "Vercel"],
+    image: "/images/projects/boostx-dashboard.png",
+    thumbnailObjectPosition: "center",
+    liveUrl: "https://boostx-azure.vercel.app",
+    embedUrl: "https://boostx-azure.vercel.app",
+    embedType: "site",
+    ctaLabel: "View site",
+    modalHighlights: [
+      "Explains the scan → tweak → benchmark → BIOS guide workflow end to end",
+      "Interactive tweak demo mirroring the desktop toggle UX (preview only)",
+      "CS2-oriented metrics: average FPS, 1% / 0.1% lows, frametime jitter",
+      "Safety messaging: per-tweak revert, restore points, and unsigned-build guidance",
+    ],
+  },
+  {
+    id: "marketi-juaj-pos",
+    title: "Marketi Juaj — Retail POS",
+    description:
+      "In-store point-of-sale module for retail staff: look up products, build a sale line by line, and complete checkout at the counter. Designed for speed on touch and keyboard, with a focused cashier UI separate from broader platform administration.",
+    category: "Web",
+    tech: ["Next.js", "TypeScript", "PostgreSQL", "Real-time APIs"],
+    image: "/images/projects/marketi-pos-cover.svg",
+    thumbnailObjectPosition: "center",
+    ctaLabel: "Case study",
+    modalHighlights: [
+      "Product search and barcode-style lookup to add items to the active ticket",
+      "Cart totals, quantity adjustments, and void-line flows for busy counters",
+      "Checkout confirmation that records the sale for back-office reporting",
+      "Role-based access so only staff on the shop floor use the POS surface",
+    ],
+    screenshotGallery: [
+      {
+        src: "/images/projects/marketi-pos-cover.svg",
+        title: "Cashier-first layout",
+        description:
+          "Large tap targets and a single-column ticket keep checkout readable on tablets and desktops at the register.",
+      },
+    ],
+  },
+  {
+    id: "minions-vs-bloons",
+    title: "Minions vs Bloons",
+    description:
+      "Browser-based tower defense at idle-resources-managment.vercel.app: deploy minions, pop incoming bloons, branch upgrades across three paths, and survive 80 waves. Includes solo play, co-op on a shared map, and versus mode where each player sees their board and the opponent’s board live.",
+    category: "Web",
+    tech: ["Next.js", "TypeScript", "WebSockets", "Vercel"],
+    image: "/images/projects/minions-vs-bloons-cover.svg",
+    thumbnailObjectPosition: "center",
+    liveUrl: "https://idle-resources-managment.vercel.app",
+    embedUrl: "https://idle-resources-managment.vercel.app",
+    embedType: "site",
+    ctaLabel: "Play in browser",
+    modalHighlights: [
+      "Solo: classic wave survival with three upgrade paths per tower type",
+      "Versus: two boards, PvP — watch your lane and the opponent’s in real time",
+      "Co-op: shared map with synchronized wave pressure",
+      "Deployed as the Vercel project idle-resources-managment",
+    ],
+  },
   // AR/VR
+  {
+    id: "sunny-hill-festival-ar",
+    title: "Sunny Hill Festival AR Experience",
+    description:
+      "Mobile AR activation supporting Sunny Hill Festival — Kosovo’s international music festival in Pristina. Built for on-site and social promotion: quick, playful AR moments attendees can launch on their phones during the event.",
+    category: "AR/VR",
+    tech: ["Unity", "C#", "AR", "Mobile"],
+    image: "/images/ARFashion.png",
+    thumbnailObjectPosition: "top",
+    ctaLabel: "View details",
+    modalHighlights: [
+      "Festival-facing AR designed for foot traffic and shareable moments",
+      "Optimized for mobile performance and short session times",
+      "Production polish for a high-visibility public event brand",
+    ],
+    screenshotGallery: [
+      {
+        src: "/images/ARFashion.png",
+        title: "Festival AR (representative)",
+        description:
+          "Portfolio uses existing AR sample imagery until festival-specific captures are added — see PR TODOs.",
+      },
+    ],
+  },
   {
     id: "ar-furniture",
     title: "AR Furniture for Your Home",
@@ -587,7 +696,7 @@ export const resumeData = {
   summary:
     "Highly skilled Unity Developer and Full-Stack Engineer with 5+ years of experience building interactive applications across games, AR/VR experiences, and modern web platforms. Proven ability to design and deliver complete products from concept to deployment, including multiplayer games, mobile experiences, real-time systems, business dashboards, and scalable web applications.",
   summarySecondary:
-    "Strong expertise in Unity (2D, 3D, AR, VR) combined with React, Next.js, Node.js, APIs, and database-backed systems. Experienced in creating both creative interactive experiences and practical business tools, including public-facing AR event activations and full-stack web products.",
+    "Strong expertise in Unity (2D, 3D, AR, VR) combined with React, Next.js, Ruby and Ruby on Rails, Node.js, APIs, and database-backed systems. I use AI-assisted development workflows to move from spec to shipped code faster while keeping architecture reviewable and maintainable. Experienced in creative interactive work and practical business software, including festival AR activations, client portfolios, and retail tooling.",
   experienceYears: "5+ years",
   experience: [
     {
@@ -651,15 +760,17 @@ export const resumeData = {
       title: "Full-Stack Web",
       items: [
         "React.js, Next.js, HTML, CSS, Tailwind",
+        "Ruby, Ruby on Rails",
         "Node.js, Express.js",
         "REST APIs and WebSockets",
-        "Firebase, MongoDB, SQL",
+        "Firebase, MongoDB, PostgreSQL, SQL",
         "Deployment with Vercel and other hosting platforms",
       ],
     },
     {
       title: "Systems & Tooling",
       items: [
+        "AI-assisted development workflows (spec → implementation → review)",
         "Third-party SDK integration",
         "System architecture design",
         "Real-time GPS tracking systems",
@@ -700,10 +811,34 @@ export const resumeData = {
         "Created multiple Unity titles with competitive multiplayer systems, physics-based gameplay, upgrades, progression, and browser/WebGL publishing.",
     },
     {
+      title: "BoostX — Windows performance product",
+      category: "Desktop / Web",
+      description:
+        "Shipped the BoostX marketing site and product narrative: hardware-aware Windows tweaks, CS2 benchmarking, and reversible optimization flows for competitive players.",
+    },
+    {
+      title: "Robert Nuha — Choreographer portfolio",
+      category: "Web / Creative",
+      description:
+        "Built and deployed robertnuha.com — a performance archive and professional CV for NOA Dance Theatre Co., with premiere spotlights and booking contact.",
+    },
+    {
+      title: "Marketi Juaj — Retail POS",
+      category: "Web / Retail",
+      description:
+        "Point-of-sale surface for in-store checkout: fast product lookup, ticket building, and sale completion for retail staff.",
+    },
+    {
+      title: "Minions vs Bloons",
+      category: "Web / Games",
+      description:
+        "Idle tower-defense browser game with solo, co-op, and PvP modes — live at idle-resources-managment.vercel.app.",
+    },
+    {
       title: "Web Applications & Platforms",
       category: "Full-stack web",
       description:
-        "Delivered business dashboards, GPS tracking systems, real-time map interfaces, and modern React / Next.js frontends backed by Node.js services and databases.",
+        "Delivered business dashboards, GPS tracking systems, real-time map interfaces, and modern React / Next.js frontends backed by Node.js and Rails services.",
     },
     {
       title: "E-Commerce & Business Websites",
@@ -720,14 +855,14 @@ export const resumeData = {
   ],
   portfolioHighlights: [
     "The Seventh Mask",
+    "BoostX",
+    "Robert Nuha — Portfolio",
+    "Minions vs Bloons",
+    "Marketi Juaj — Retail POS",
     "Zombie Crusher",
-    "Florify",
-    "Last to Blast",
     "Sunny Hill Festival AR Experience",
     "Room Planner",
     "E-Commerce Platform",
-    "Admin Dashboard",
-    "AR Furniture for Your Home",
     "AR Measurement App",
   ],
   education: {
@@ -740,6 +875,7 @@ export const resumeData = {
   ],
   additionalInfo: [
     "Portfolio website: altindemaj.com — live demos, case studies, and project highlights",
+    "Ruby / Rails and AI-assisted workflows for faster, reviewable delivery",
     "Strong problem-solving and system design skills",
     "Able to work independently and deliver complete products",
     "Comfortable across both creative development (games / AR / VR) and business systems (web / apps)",
@@ -752,6 +888,9 @@ export const skills = [
   "C#",
   "React JS",
   "Next JS",
+  "Ruby",
+  "Ruby on Rails",
+  "AI-Assisted Workflows",
   "Game Development",
   "Cross-functional Collaboration",
   "Debugging",

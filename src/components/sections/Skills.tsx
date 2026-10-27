@@ -20,7 +20,8 @@ export function Skills() {
             Skills
           </h2>
           <p className="mt-2 max-w-xl text-zinc-500">
-            Core competencies and tools I bring to every project.
+            Unity and web stacks, Ruby on Rails, and AI-assisted delivery —
+            tools I use to ship complete products.
           </p>
         </motion.div>
 

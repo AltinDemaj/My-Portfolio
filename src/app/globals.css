@@ -142,4 +142,8 @@ body {
   .resume-print-root {
     color: #fafafa;
   }
+
+  .resume-print-root section {
+    break-inside: avoid;
+  }
 }

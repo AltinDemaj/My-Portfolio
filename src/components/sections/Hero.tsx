@@ -172,10 +172,10 @@ export function Hero() {
             className="mt-7 max-w-lg text-[0.875rem] leading-[1.8] text-zinc-300 text-pretty sm:mt-8 sm:text-[0.9375rem] md:text-base"
             style={{ textShadow: "0 1px 6px rgba(0,0,0,0.3)" }}
           >
-            I design and build immersive digital products — from Unity games
-            and AR/VR experiences to full-stack web platforms. My focus is on
-            performance, smooth user experience, and turning ideas into
-            polished real-world products.
+            I design and build immersive digital products — Unity games, AR/VR,
+            and full-stack web (React, Next.js, Ruby on Rails). I use
+            AI-assisted workflows to move from idea to production quickly, with
+            emphasis on performance, clear UX, and maintainable code.
           </motion.p>
 
           {/* Proof row */}

@@ -11,8 +11,8 @@ const highlights = [
   },
   {
     icon: Zap,
-    value: "Full pipeline",
-    label: "Design to launch & publishing",
+    value: "Ship faster",
+    label: "AI-assisted workflows, production quality",
   },
   {
     icon: Users,
@@ -53,11 +53,11 @@ export function About() {
               Experience
             </h2>
             <p className="mt-4 text-sm leading-relaxed text-zinc-400 text-pretty break-words sm:text-base">
-              Application Developer with advanced skills in game development,
-              cross-functional collaboration, and shipping high-quality
-              experiences. From prototyping and user testing to performance
-              optimization and platform publishing — I focus on stability,
-              clean code, and player satisfaction.
+              Application developer focused on Unity games, AR/VR, and full-stack
+              web — including Ruby and Ruby on Rails when the product calls for
+              it. I work with AI-assisted workflows to ship faster without
+              skipping architecture or review: prototypes, performance passes, and
+              production releases with stable, maintainable code.
             </p>
             <ul className="mt-6 space-y-2 text-sm text-zinc-500">
               {experienceBullets.slice(0, 5).map((bullet, i) => (
