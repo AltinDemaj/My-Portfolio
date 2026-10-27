@@ -19,30 +19,31 @@ const syne = Syne({
 });
 
 export const metadata: Metadata = {
-  title: "Altin Demaj | Unity Developer, AR/VR Developer, Full-Stack Developer",
+  title: "Altin Demaj | Full-Stack Developer · React & Next.js · Ruby on Rails",
   description:
-    "Altin Demaj is a Unity Developer, AR/VR Developer, and Full-Stack Developer building games, immersive experiences, and modern web platforms from concept to launch.",
+    "Altin Demaj is a full-stack developer building React, Next.js, and Ruby on Rails products — with AI-assisted workflows, plus Unity and AR/VR for games and immersive work.",
   applicationName: "Altin Demaj Portfolio",
   keywords: [
     "Altin Demaj",
-    "Unity Developer",
-    "AR/VR Developer",
     "Full-Stack Developer",
+    "React Developer",
+    "Next.js Developer",
+    "Ruby on Rails",
     "Next.js Portfolio",
     "Game Developer Kosovo",
   ],
   openGraph: {
-    title: "Altin Demaj | Unity Developer, AR/VR Developer, Full-Stack Developer",
+    title: "Altin Demaj | Full-Stack Developer · React & Next.js · Ruby on Rails",
     description:
-      "Portfolio of Altin Demaj featuring Unity games, AR/VR concepts, full-stack web apps, and interactive demos.",
+      "Portfolio of Altin Demaj — full-stack web apps, Ruby on Rails, AI-assisted delivery, Unity games, and AR/VR work.",
     type: "website",
     locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Altin Demaj | Unity Developer, AR/VR Developer, Full-Stack Developer",
+    title: "Altin Demaj | Full-Stack Developer · React & Next.js · Ruby on Rails",
     description:
-      "Portfolio of Altin Demaj featuring Unity games, AR/VR concepts, full-stack web apps, and interactive demos.",
+      "Portfolio of Altin Demaj — full-stack web apps, Ruby on Rails, AI-assisted delivery, Unity games, and AR/VR work.",
   },
 };
 

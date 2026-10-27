@@ -20,7 +20,7 @@ import { ResumeDownloadPdfButton } from "@/components/resume/ResumeDownloadPdfLa
 export const metadata = {
   title: "Resume — Altin Demaj",
   description:
-    "Resume for Altin Demaj: Unity Developer, AR/VR Developer, and Full-Stack Developer.",
+    "Resume for Altin Demaj: Full-Stack Developer (React, Next.js, Ruby on Rails).",
 };
 
 export default function ResumePage() {
@@ -51,7 +51,7 @@ export default function ResumePage() {
 
         <section
           id="resume-pdf-export"
-          className="overflow-hidden rounded-2xl border border-border bg-card shadow-2xl shadow-black/40 print:rounded-xl print:border-zinc-800 print:shadow-none"
+          className="overflow-hidden rounded-2xl border border-border bg-card/90 shadow-2xl shadow-black/40 print:rounded-xl print:border-zinc-800 print:bg-zinc-950 print:shadow-none"
         >
           <header className="relative border-b border-border bg-gradient-to-br from-zinc-950 via-zinc-900 to-zinc-950 px-6 py-8 sm:px-10 sm:py-10 print:py-6">
             <div

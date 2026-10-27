@@ -62,9 +62,9 @@ export function projectOpensDetailModal(project: Project): boolean {
 
 /** Grouped by category for the Projects section: Unity, Web/Apps, AR/VR */
 export const projectCategories: { label: string; category: ProjectCategory }[] = [
-  { label: "Unity Projects", category: "Unity" },
   { label: "Web Projects & Apps", category: "Web" },
   { label: "AR/VR", category: "AR/VR" },
+  { label: "Unity Projects", category: "Unity" },
 ];
 
 /** Iframe + “open demo” URL: built-in route, or override with `NEXT_PUBLIC_PIZZA_DEMO_URL` if you host a copy elsewhere. */
@@ -88,128 +88,100 @@ const STUDIO_DEMO_EMBED_URL =
     ? process.env.NEXT_PUBLIC_STUDIO_DEMO_URL.replace(/\/$/, "")
     : STUDIO_DEMO_BASE;
 
+const MARKETI_JUAJ_POS_URL =
+  "https://marketi-juaj-hxpvbduvm-altindemajs-projects.vercel.app";
+const MINIONS_VS_BLOONS_POKI_URL =
+  "https://poki.com/en/preview/440ab299-5122-4d1b-afd8-bd50ebeed224/551d707e-8405-465a-b7cb-0787232fcea4";
+
 export const projects: Project[] = [
-  // Unity Projects
   {
-    id: "zombie-crusher",
-    title: "Zombie Crusher",
+    id: "marketi-juaj-pos",
+    title: "Marketi Juaj — Retail POS",
     description:
-      "Adrenaline-fueled action game: fight hordes of zombies with a weaponized car. Earn upgrades, unlock maps, and dominate with speed, steel, and savage upgrades.",
-    category: "Unity",
-    tech: ["Unity", "C#", "HTML5", "WebGL"],
-    image: "/images/ZombieCrusherImage.png",
-    thumbnailObjectPosition: "top",
-    liveUrl: "https://altindemaj.itch.io/zombie-crusher",
-    ctaLabel: "Play on itch.io",
-    embedUrl: "https://itch.io/embed-upload/14123077?color=333333",
-    modalHighlights: [
-      "2D top-down action game",
-      "Drive a weaponized car and crush zombies",
-      "Collect money from defeated zombies",
-      "Upgrade your car (engine, armor, tires, weapons)",
-      "Unlock new maps and tougher enemies",
-    ],
-  },
-  {
-    id: "florify",
-    title: "Florify",
-    description:
-      "A cozy planting game: you have three plots to grow flowers, discover 27 different plants from seeds, and earn new seeds by growing the right blooms. Sell seeds you don't need and remove plants to make room for your collection.",
-    category: "Unity",
-    tech: ["Unity", "C#", "HTML5", "WebGL"],
-    image: "/images/FlorifyGame.png",
-    liveUrl: "https://altindemaj.itch.io/florify",
-    ctaLabel: "Play on itch.io",
-    embedUrl: "https://itch.io/embed-upload/9401866?color=333333",
-    thumbnailObjectPosition: "top",
-    modalHighlights: [
-      "Three spaces to plant and manage your garden",
-      "Discover 27 plants by planting and combining seeds",
-      "Earn new seeds by growing different flowers",
-      "Sell seeds and remove plants you don't want",
-      "Play in the browser on itch.io",
-    ],
-  },
-  {
-    id: "lost-signal",
-    title: "Lost Signal",
-    description:
-      "A tense horror experience built in Unity: the power is out, lines are dead, and nobody can call for help. You’re the one trying to bring the electricity back — but the deeper you go into the dark, the less certain you are about what’s really wrong. Gameplay footage; not a browser build.",
-    category: "Unity",
-    tech: ["Unity", "C#", "Horror", "3D"],
-    image: "/images/LostSignalGame.png",
+      "Browser-based register for Balkan retailers: Albanian-language cashier UI with barcode or keyboard search, category product grid, and a live ticket with per-line quantity, weight-based items, and VAT breakdown. Staff complete checkout from desktop, tablet, or phone — built for counter speed with scanner, scale, and receipt printer workflows.",
+    category: "Web",
+    tech: ["Next.js", "TypeScript", "PostgreSQL", "Real-time APIs"],
+    image: "/images/projects/marketi-pos-cover.svg",
     thumbnailObjectPosition: "center",
-    liveUrl:
-      "https://drive.google.com/file/d/1eOjxk0JIIYb5wU7sWiQWXe_3Q-t0Jp15/view?usp=sharing",
-    ctaLabel: "Watch video",
-    embedUrl:
-      "https://drive.google.com/file/d/1eOjxk0JIIYb5wU7sWiQWXe_3Q-t0Jp15/preview",
-    embedType: "video",
-    embedAspectRatio: "16/9",
-    collaborators: "Collaborated with Eduard Dibrani.",
+    liveUrl: MARKETI_JUAJ_POS_URL,
+    embedUrl: MARKETI_JUAJ_POS_URL,
+    embedType: "site",
+    ctaLabel: "Marketi Juaj POS System",
     modalHighlights: [
-      "Restore power while the world stays eerily offline — no calls, no signals",
-      "Pressure rises as you work through failing systems and empty corridors",
-      "Horror that escalates the further you push into the mystery",
-      "Built in Unity — watch gameplay footage in the modal",
-    ],
-  },
-  {
-    id: "last-to-blast",
-    title: "Last to Blast",
-    description:
-      "A fast, chaotic Unity multiplayer game in pixel art. Pick a name, pile into the lobby, and ready up. When the round starts, one player carries a live bomb — everyone else runs, dodges, and tries not to catch the pass. Two minutes on the clock, power-ups to freeze rivals or jump higher, and eliminations that send you to spectate any survivor you choose. When the fuse wins, the blast reshuffles who’s left — until one player remains.",
-    category: "Unity",
-    tech: ["Unity", "C#", "Multiplayer", "Netcode"],
-    image: "/images/SecondWallpaper.png",
-    thumbnailObjectPosition: "center",
-    thumbnailOverlay: {
-      headline: "Last To Blast",
-      placement: "center",
-      headlineTone: "red-outline",
-      showInModal: false,
-    },
-    ctaLabel: "View walkthrough",
-    modalHighlights: [
-      "Host / client / server flow for real multiplayer sessions",
-      "Bomb carrier vs runners — handoffs decide who’s on the clock",
-      "Superpowers: freeze, mobility, and more to swing the chase",
-      "Spectate any player after you’re out; clear win state when one remains",
+      "Scan or search (F2) to add products; category filters for fast browsing at the register",
+      "Hold tickets, adjust quantities, and support weighted produce on the same sale",
+      "Subtotal, VAT, and pay flow tuned for in-store checkout — not marketplace admin",
+      "Runs in the browser on counter hardware; pairs with barcode and thermal printer setups",
     ],
     screenshotGallery: [
       {
-        src: "/images/MenuScene.png",
-        title: "Name & connect",
+        src: "/images/projects/marketi-pos-cover.svg",
+        title: "Cashier-first layout",
         description:
-          "Enter your display name and jump in as host, client, or dedicated server. The menu sits over a cozy pixel bedroom while you line up the session.",
-      },
-      {
-        src: "/images/LobbySceneServer.png",
-        title: "Lobby — ready up",
-        description:
-          "Everyone joins the same room, sees who’s in, and hits ready when they’re set. The host keeps the session in sync before the match loads.",
-      },
-      {
-        src: "/images/StartingGAME.png",
-        title: "The bomb drops",
-        description:
-          "One player starts tagged with the bomb; the rest scatter through the arena. You’ve got two minutes before it blows — stay away from the carrier or steal the handoff on purpose. Power-ups let you freeze opponents, leap higher, and bend the chase in your favor.",
-      },
-      {
-        src: "/images/SpectateMode.png",
-        title: "Spectate after elimination",
-        description:
-          "When you’re out, you’re not stuck on a static screen — follow any living player, swap targets, and keep up with the chaos until the round resolves.",
-      },
-      {
-        src: "/images/Winner.png",
-        title: "Blast resolves — winner crowned",
-        description:
-          "When the timer hits zero the bomb detonates on whoever’s holding it. If more players remain, the fight continues; if only one is left standing, the win screen makes it official.",
+          "Large tap targets and a single-column ticket keep checkout readable on tablets and desktops at the register.",
       },
     ],
   },
-  // Web Projects & Apps
+  {
+    id: "minions-vs-bloons",
+    title: "Minions vs Bloons",
+    description:
+      "Tower-defense game published on Poki: place yellow minion defenders, pop waves of bloons, and branch upgrades across three paths per unit. Solo mode runs 80 escalating waves. Versus pits two players on separate boards with a live view of the opponent’s lane. Co-op shares one map so both players coordinate defense in real time.",
+    category: "Web",
+    tech: ["Unity", "C#", "WebGL", "Multiplayer", "Poki"],
+    image: "/images/projects/minions-vs-bloons-cover.svg",
+    thumbnailObjectPosition: "center",
+    liveUrl: MINIONS_VS_BLOONS_POKI_URL,
+    ctaLabel: "Play on Poki",
+    modalHighlights: [
+      "Core loop: deploy minions, target bloon paths, spend currency on three-path upgrades",
+      "Solo — survive 80 waves with escalating pressure and build variety",
+      "Versus — dual boards; each player sees their own field and the opponent’s board live",
+      "Co-op — one shared map with synchronized multiplayer defense",
+      "Shipped for browser play on Poki with real-time session sync",
+    ],
+  },
+  // AR/VR,
+  {
+    id: "boostx-pc-optimizer",
+    title: "BoostX",
+    description:
+      "Marketing site and product story for BoostX — a Windows desktop app that helps competitive FPS players scan hardware, apply reversible system tweaks, benchmark Counter-Strike 2 with PresentMon when available, and follow vendor-specific BIOS checklists without touching firmware from the app.",
+    category: "Web",
+    tech: ["React", "TypeScript", "Vite", "Vercel"],
+    image: "/images/projects/boostx-dashboard.png",
+    thumbnailObjectPosition: "center",
+    liveUrl: "https://boostx-azure.vercel.app",
+    embedUrl: "https://boostx-azure.vercel.app",
+    embedType: "site",
+    ctaLabel: "View site",
+    modalHighlights: [
+      "Explains the scan → tweak → benchmark → BIOS guide workflow end to end",
+      "Interactive tweak demo mirroring the desktop toggle UX (preview only)",
+      "CS2-oriented metrics: average FPS, 1% / 0.1% lows, frametime jitter",
+      "Safety messaging: per-tweak revert, restore points, and unsigned-build guidance",
+    ],
+  },
+  {
+    id: "robert-nuha-portfolio",
+    title: "Robert Nuha — Portfolio",
+    description:
+      "Production portfolio for choreographer Robert Nuha (NOA): biography, education, international career, and a filterable archive of dance-theatre works — including premieres such as After The War, Who Are We?! across Pristina, Tirana, Skopje, Paris, and Brussels. Built as a fast, editorial Next.js site with bilingual-friendly layout and clear contact paths for bookings and press.",
+    category: "Web",
+    tech: ["Next.js", "TypeScript", "Tailwind CSS", "Vercel"],
+    image: "/images/projects/robertnuha-hero.jpg",
+    thumbnailObjectPosition: "center",
+    liveUrl: "https://robertnuha.com",
+    embedUrl: "https://robertnuha.com",
+    embedType: "site",
+    ctaLabel: "Visit site",
+    modalHighlights: [
+      "Hero spotlight for current premieres with links to full performance detail",
+      "Structured CV: education, resident roles, awards, and international credits",
+      "Performance archive with filters (performances, workshops, festivals, company)",
+      "Contact block with email and phone for professional inquiries",
+    ],
+  },
   {
     id: "room-planner-threejs",
     title: "Room Planner",
@@ -420,92 +392,6 @@ export const projects: Project[] = [
     ],
   },
   {
-    id: "robert-nuha-portfolio",
-    title: "Robert Nuha — Portfolio",
-    description:
-      "Production portfolio for choreographer Robert Nuha (NOA): biography, education, international career, and a filterable archive of dance-theatre works — including premieres such as After The War, Who Are We?! across Pristina, Tirana, Skopje, Paris, and Brussels. Built as a fast, editorial Next.js site with bilingual-friendly layout and clear contact paths for bookings and press.",
-    category: "Web",
-    tech: ["Next.js", "TypeScript", "Tailwind CSS", "Vercel"],
-    image: "/images/projects/robertnuha-hero.jpg",
-    thumbnailObjectPosition: "center",
-    liveUrl: "https://robertnuha.com",
-    embedUrl: "https://robertnuha.com",
-    embedType: "site",
-    ctaLabel: "Visit site",
-    modalHighlights: [
-      "Hero spotlight for current premieres with links to full performance detail",
-      "Structured CV: education, resident roles, awards, and international credits",
-      "Performance archive with filters (performances, workshops, festivals, company)",
-      "Contact block with email and phone for professional inquiries",
-    ],
-  },
-  {
-    id: "boostx-pc-optimizer",
-    title: "BoostX",
-    description:
-      "Marketing site and product story for BoostX — a Windows desktop app that helps competitive FPS players scan hardware, apply reversible system tweaks, benchmark Counter-Strike 2 with PresentMon when available, and follow vendor-specific BIOS checklists without touching firmware from the app.",
-    category: "Web",
-    tech: ["React", "TypeScript", "Vite", "Vercel"],
-    image: "/images/projects/boostx-dashboard.png",
-    thumbnailObjectPosition: "center",
-    liveUrl: "https://boostx-azure.vercel.app",
-    embedUrl: "https://boostx-azure.vercel.app",
-    embedType: "site",
-    ctaLabel: "View site",
-    modalHighlights: [
-      "Explains the scan → tweak → benchmark → BIOS guide workflow end to end",
-      "Interactive tweak demo mirroring the desktop toggle UX (preview only)",
-      "CS2-oriented metrics: average FPS, 1% / 0.1% lows, frametime jitter",
-      "Safety messaging: per-tweak revert, restore points, and unsigned-build guidance",
-    ],
-  },
-  {
-    id: "marketi-juaj-pos",
-    title: "Marketi Juaj — Retail POS",
-    description:
-      "In-store point-of-sale module for retail staff: look up products, build a sale line by line, and complete checkout at the counter. Designed for speed on touch and keyboard, with a focused cashier UI separate from broader platform administration.",
-    category: "Web",
-    tech: ["Next.js", "TypeScript", "PostgreSQL", "Real-time APIs"],
-    image: "/images/projects/marketi-pos-cover.svg",
-    thumbnailObjectPosition: "center",
-    ctaLabel: "Case study",
-    modalHighlights: [
-      "Product search and barcode-style lookup to add items to the active ticket",
-      "Cart totals, quantity adjustments, and void-line flows for busy counters",
-      "Checkout confirmation that records the sale for back-office reporting",
-      "Role-based access so only staff on the shop floor use the POS surface",
-    ],
-    screenshotGallery: [
-      {
-        src: "/images/projects/marketi-pos-cover.svg",
-        title: "Cashier-first layout",
-        description:
-          "Large tap targets and a single-column ticket keep checkout readable on tablets and desktops at the register.",
-      },
-    ],
-  },
-  {
-    id: "minions-vs-bloons",
-    title: "Minions vs Bloons",
-    description:
-      "Browser-based tower defense at idle-resources-managment.vercel.app: deploy minions, pop incoming bloons, branch upgrades across three paths, and survive 80 waves. Includes solo play, co-op on a shared map, and versus mode where each player sees their board and the opponent’s board live.",
-    category: "Web",
-    tech: ["Next.js", "TypeScript", "WebSockets", "Vercel"],
-    image: "/images/projects/minions-vs-bloons-cover.svg",
-    thumbnailObjectPosition: "center",
-    liveUrl: "https://idle-resources-managment.vercel.app",
-    embedUrl: "https://idle-resources-managment.vercel.app",
-    embedType: "site",
-    ctaLabel: "Play in browser",
-    modalHighlights: [
-      "Solo: classic wave survival with three upgrade paths per tower type",
-      "Versus: two boards, PvP — watch your lane and the opponent’s in real time",
-      "Co-op: shared map with synchronized wave pressure",
-      "Deployed as the Vercel project idle-resources-managment",
-    ],
-  },
-  // AR/VR
-  {
     id: "sunny-hill-festival-ar",
     title: "Sunny Hill Festival AR Experience",
     description:
@@ -525,7 +411,7 @@ export const projects: Project[] = [
         src: "/images/ARFashion.png",
         title: "Festival AR (representative)",
         description:
-          "Portfolio uses existing AR sample imagery until festival-specific captures are added — see PR TODOs.",
+          "Representative AR imagery — replace with approved festival captures when available.",
       },
     ],
   },
@@ -645,6 +531,125 @@ export const projects: Project[] = [
       "Round-trip workflow: refine on the web, then view the result again in AR",
     ],
   },
+  {
+    id: "zombie-crusher",
+    title: "Zombie Crusher",
+    description:
+      "Adrenaline-fueled action game: fight hordes of zombies with a weaponized car. Earn upgrades, unlock maps, and dominate with speed, steel, and savage upgrades.",
+    category: "Unity",
+    tech: ["Unity", "C#", "HTML5", "WebGL"],
+    image: "/images/ZombieCrusherImage.png",
+    thumbnailObjectPosition: "top",
+    liveUrl: "https://altindemaj.itch.io/zombie-crusher",
+    ctaLabel: "Play on itch.io",
+    embedUrl: "https://itch.io/embed-upload/14123077?color=333333",
+    modalHighlights: [
+      "2D top-down action game",
+      "Drive a weaponized car and crush zombies",
+      "Collect money from defeated zombies",
+      "Upgrade your car (engine, armor, tires, weapons)",
+      "Unlock new maps and tougher enemies",
+    ],
+  },
+  {
+    id: "florify",
+    title: "Florify",
+    description:
+      "A cozy planting game: you have three plots to grow flowers, discover 27 different plants from seeds, and earn new seeds by growing the right blooms. Sell seeds you don't need and remove plants to make room for your collection.",
+    category: "Unity",
+    tech: ["Unity", "C#", "HTML5", "WebGL"],
+    image: "/images/FlorifyGame.png",
+    liveUrl: "https://altindemaj.itch.io/florify",
+    ctaLabel: "Play on itch.io",
+    embedUrl: "https://itch.io/embed-upload/9401866?color=333333",
+    thumbnailObjectPosition: "top",
+    modalHighlights: [
+      "Three spaces to plant and manage your garden",
+      "Discover 27 plants by planting and combining seeds",
+      "Earn new seeds by growing different flowers",
+      "Sell seeds and remove plants you don't want",
+      "Play in the browser on itch.io",
+    ],
+  },
+  {
+    id: "lost-signal",
+    title: "Lost Signal",
+    description:
+      "A tense horror experience built in Unity: the power is out, lines are dead, and nobody can call for help. You’re the one trying to bring the electricity back — but the deeper you go into the dark, the less certain you are about what’s really wrong. Gameplay footage; not a browser build.",
+    category: "Unity",
+    tech: ["Unity", "C#", "Horror", "3D"],
+    image: "/images/LostSignalGame.png",
+    thumbnailObjectPosition: "center",
+    liveUrl:
+      "https://drive.google.com/file/d/1eOjxk0JIIYb5wU7sWiQWXe_3Q-t0Jp15/view?usp=sharing",
+    ctaLabel: "Watch video",
+    embedUrl:
+      "https://drive.google.com/file/d/1eOjxk0JIIYb5wU7sWiQWXe_3Q-t0Jp15/preview",
+    embedType: "video",
+    embedAspectRatio: "16/9",
+    collaborators: "Collaborated with Eduard Dibrani.",
+    modalHighlights: [
+      "Restore power while the world stays eerily offline — no calls, no signals",
+      "Pressure rises as you work through failing systems and empty corridors",
+      "Horror that escalates the further you push into the mystery",
+      "Built in Unity — watch gameplay footage in the modal",
+    ],
+  },
+  {
+    id: "last-to-blast",
+    title: "Last to Blast",
+    description:
+      "A fast, chaotic Unity multiplayer game in pixel art. Pick a name, pile into the lobby, and ready up. When the round starts, one player carries a live bomb — everyone else runs, dodges, and tries not to catch the pass. Two minutes on the clock, power-ups to freeze rivals or jump higher, and eliminations that send you to spectate any survivor you choose. When the fuse wins, the blast reshuffles who’s left — until one player remains.",
+    category: "Unity",
+    tech: ["Unity", "C#", "Multiplayer", "Netcode"],
+    image: "/images/SecondWallpaper.png",
+    thumbnailObjectPosition: "center",
+    thumbnailOverlay: {
+      headline: "Last To Blast",
+      placement: "center",
+      headlineTone: "red-outline",
+      showInModal: false,
+    },
+    ctaLabel: "View walkthrough",
+    modalHighlights: [
+      "Host / client / server flow for real multiplayer sessions",
+      "Bomb carrier vs runners — handoffs decide who’s on the clock",
+      "Superpowers: freeze, mobility, and more to swing the chase",
+      "Spectate any player after you’re out; clear win state when one remains",
+    ],
+    screenshotGallery: [
+      {
+        src: "/images/MenuScene.png",
+        title: "Name & connect",
+        description:
+          "Enter your display name and jump in as host, client, or dedicated server. The menu sits over a cozy pixel bedroom while you line up the session.",
+      },
+      {
+        src: "/images/LobbySceneServer.png",
+        title: "Lobby — ready up",
+        description:
+          "Everyone joins the same room, sees who’s in, and hits ready when they’re set. The host keeps the session in sync before the match loads.",
+      },
+      {
+        src: "/images/StartingGAME.png",
+        title: "The bomb drops",
+        description:
+          "One player starts tagged with the bomb; the rest scatter through the arena. You’ve got two minutes before it blows — stay away from the carrier or steal the handoff on purpose. Power-ups let you freeze opponents, leap higher, and bend the chase in your favor.",
+      },
+      {
+        src: "/images/SpectateMode.png",
+        title: "Spectate after elimination",
+        description:
+          "When you’re out, you’re not stuck on a static screen — follow any living player, swap targets, and keep up with the chaos until the round resolves.",
+      },
+      {
+        src: "/images/Winner.png",
+        title: "Blast resolves — winner crowned",
+        description:
+          "When the timer hits zero the bomb detonates on whoever’s holding it. If more players remain, the fight continues; if only one is left standing, the win screen makes it official.",
+      },
+    ],
+  },
 ];
 
 export interface Service {
@@ -656,16 +661,17 @@ export interface Service {
 
 export const services: Service[] = [
   {
-    id: "2",
-    title: "Game Development",
-    description: "Unity games for web and desktop. From prototypes to full releases.",
-    icon: "Gamepad2",
-  },
-  {
     id: "1",
     title: "Web Development",
-    description: "Modern, fast websites and web apps with React, Next.js, and TypeScript.",
+    description:
+      "Production web apps with React, Next.js, TypeScript, and Ruby on Rails — from MVP to launch.",
     icon: "Globe",
+  },
+  {
+    id: "2",
+    title: "Game Development",
+    description: "Unity games for web and desktop when the product needs interactive 3D or AR.",
+    icon: "Gamepad2",
   },
   {
     id: "3",
@@ -683,7 +689,7 @@ export const services: Service[] = [
 
 export const siteOwner = {
   name: "Altin Demaj",
-  title: "Unity Developer | AR/VR Developer | Full-Stack Developer",
+  title: "Full-Stack Developer | React & Next.js | Ruby on Rails",
   location: "Prishtine, Kosovo",
   email: "altindemaj.dev@gmail.com",
   phone: "+38349405430",
@@ -692,11 +698,11 @@ export const siteOwner = {
 
 export const resumeData = {
   headline: "Altin Demaj",
-  role: "Unity Developer | AR/VR Developer | Full-Stack Developer",
+  role: "Full-Stack Developer · React & Next.js · Ruby on Rails",
   summary:
-    "Highly skilled Unity Developer and Full-Stack Engineer with 5+ years of experience building interactive applications across games, AR/VR experiences, and modern web platforms. Proven ability to design and deliver complete products from concept to deployment, including multiplayer games, mobile experiences, real-time systems, business dashboards, and scalable web applications.",
+    "Full-stack engineer with 5+ years shipping production web apps, APIs, and client-facing products. I lead with React, Next.js, and TypeScript, backed by Ruby on Rails and Node when the stack calls for it. I use AI-assisted workflows to move from spec to deployed code faster while keeping reviews, tests, and architecture disciplined.",
   summarySecondary:
-    "Strong expertise in Unity (2D, 3D, AR, VR) combined with React, Next.js, Ruby and Ruby on Rails, Node.js, APIs, and database-backed systems. I use AI-assisted development workflows to move from spec to shipped code faster while keeping architecture reviewable and maintainable. Experienced in creative interactive work and practical business software, including festival AR activations, client portfolios, and retail tooling.",
+    "Recent work includes retail POS software, competitive PC tooling (BoostX), choreographer portfolios, and a Poki-published multiplayer tower-defense game. I also build Unity games and AR/VR experiences as a secondary specialty — multiplayer systems, festival activations, and immersive prototypes.",
   experienceYears: "5+ years",
   experience: [
     {
@@ -737,45 +743,33 @@ export const resumeData = {
   ],
   skillGroups: [
     {
-      title: "Game Development",
-      items: [
-        "Unity (2D, 3D, URP, HDRP)",
-        "C# (advanced)",
-        "Multiplayer systems",
-        "Physics, UI, animation systems",
-        "Performance optimization",
-      ],
-    },
-    {
-      title: "AR / VR Development",
-      items: [
-        "Unity AR Foundation",
-        "Vuforia",
-        "Marker-based & markerless AR",
-        "Interactive AR for events, education, and marketing",
-        "VR interactions and environments",
-      ],
-    },
-    {
       title: "Full-Stack Web",
       items: [
-        "React.js, Next.js, HTML, CSS, Tailwind",
+        "React.js, Next.js, TypeScript, HTML, CSS, Tailwind",
         "Ruby, Ruby on Rails",
         "Node.js, Express.js",
         "REST APIs and WebSockets",
-        "Firebase, MongoDB, PostgreSQL, SQL",
-        "Deployment with Vercel and other hosting platforms",
+        "PostgreSQL, MongoDB, Firebase, SQL",
+        "Vercel and production deployment",
       ],
     },
     {
-      title: "Systems & Tooling",
+      title: "Delivery & AI-assisted development",
       items: [
-        "AI-assisted development workflows (spec → implementation → review)",
-        "Third-party SDK integration",
-        "System architecture design",
-        "Real-time GPS tracking systems",
-        "Cross-platform delivery",
+        "AI-assisted workflows from spec to production",
+        "System architecture and code review",
+        "Third-party SDK and API integration",
+        "Real-time and GPS-backed interfaces",
         "Git and collaborative workflows",
+      ],
+    },
+    {
+      title: "Game & interactive (secondary)",
+      items: [
+        "Unity (2D, 3D, URP, HDRP) and C#",
+        "Multiplayer and WebGL publishing",
+        "AR Foundation, Vuforia, mobile AR/VR",
+        "Performance optimization and polish passes",
       ],
     },
   ],
@@ -832,7 +826,7 @@ export const resumeData = {
       title: "Minions vs Bloons",
       category: "Web / Games",
       description:
-        "Idle tower-defense browser game with solo, co-op, and PvP modes — live at idle-resources-managment.vercel.app.",
+        "Poki-published tower defense with solo 80-wave mode, co-op, and live PvP dual-board multiplayer.",
     },
     {
       title: "Web Applications & Platforms",
@@ -884,13 +878,16 @@ export const resumeData = {
 } as const;
 
 export const skills = [
-  "Unity",
-  "C#",
   "React JS",
   "Next JS",
+  "TypeScript",
   "Ruby",
   "Ruby on Rails",
   "AI-Assisted Workflows",
+  "Node.js",
+  "PostgreSQL",
+  "Unity",
+  "C#",
   "Game Development",
   "Cross-functional Collaboration",
   "Debugging",

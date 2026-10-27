@@ -53,11 +53,11 @@ export function About() {
               Experience
             </h2>
             <p className="mt-4 text-sm leading-relaxed text-zinc-400 text-pretty break-words sm:text-base">
-              Application developer focused on Unity games, AR/VR, and full-stack
-              web — including Ruby and Ruby on Rails when the product calls for
-              it. I work with AI-assisted workflows to ship faster without
-              skipping architecture or review: prototypes, performance passes, and
-              production releases with stable, maintainable code.
+              Full-stack developer leading with React, Next.js, TypeScript, and
+              Ruby on Rails. I use AI-assisted workflows to go from spec to
+              production quickly while keeping architecture and code review
+              disciplined. Unity and AR/VR are a strong secondary focus for games
+              and immersive prototypes.
             </p>
             <ul className="mt-6 space-y-2 text-sm text-zinc-500">
               {experienceBullets.slice(0, 5).map((bullet, i) => (

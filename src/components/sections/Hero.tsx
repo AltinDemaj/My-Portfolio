@@ -4,16 +4,16 @@ import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion, useMotionValue, useTransform } from "framer-motion";
-import { ArrowRight, FileText, Gamepad2, Boxes, Glasses, Code2, Clock, Layers } from "lucide-react";
+import { ArrowRight, FileText, Gamepad2, Code2, Clock, Layers, Sparkles } from "lucide-react";
 import { siteOwner } from "@/data/portfolio";
 
 const UNITY_GIF_PATH = "/unity-editor.gif";
 
 const BADGES = [
-  { icon: Gamepad2, label: "Unity Developer" },
-  { icon: Boxes, label: "2D & 3D Games" },
-  { icon: Glasses, label: "AR/VR" },
-  { icon: Code2, label: "Full-Stack" },
+  { icon: Code2, label: "Full-Stack Web" },
+  { icon: Layers, label: "React · Next.js" },
+  { icon: Sparkles, label: "AI-assisted dev" },
+  { icon: Gamepad2, label: "Unity & AR/VR" },
 ] as const;
 
 export function Hero() {
@@ -99,9 +99,13 @@ export function Hero() {
                 key={label}
                 className="inline-flex items-center gap-1.5 rounded-full border border-zinc-600/40 bg-black/40 px-3 py-1 text-[12px] font-medium text-zinc-300 backdrop-blur-md"
               >
-                <Icon className={`h-3 w-3 ${label === "Unity Developer" ? "text-amber-400/80" : "text-zinc-400"}`} />
-                {label === "Unity Developer" ? (
-                  <span className="bg-gradient-to-r from-amber-400/90 to-yellow-300/90 bg-clip-text text-transparent">{label}</span>
+                <Icon
+                  className={`h-3 w-3 ${label === "Full-Stack Web" ? "text-amber-400/80" : "text-zinc-400"}`}
+                />
+                {label === "Full-Stack Web" ? (
+                  <span className="bg-gradient-to-r from-amber-400/90 to-yellow-300/90 bg-clip-text text-transparent">
+                    {label}
+                  </span>
                 ) : (
                   label
                 )}
@@ -134,9 +138,9 @@ export function Hero() {
               textShadow: "0 2px 10px rgba(0,0,0,0.5)",
             }}
           >
-            <span className="text-zinc-100">Creative </span>
+            <span className="text-zinc-100">Full-Stack </span>
             <span className="bg-gradient-to-r from-amber-400 via-yellow-300 to-amber-500 bg-clip-text text-transparent drop-shadow-[0_2px_8px_rgba(200,160,40,0.3)]">
-              Unity
+              Web
             </span>
             <span className="text-zinc-100"> Developer</span>
           </motion.p>
@@ -149,11 +153,11 @@ export function Hero() {
             className="mt-3 text-[0.7rem] font-medium uppercase tracking-[0.24em] text-zinc-400 sm:mt-4 sm:text-[0.8125rem]"
             style={{ textShadow: "0 1px 6px rgba(0,0,0,0.4)" }}
           >
-            Unity Games
+            React · Next.js · TypeScript
             <span className="mx-2.5 text-zinc-600">•</span>
-            AR/VR
+            Ruby on Rails
             <span className="mx-2.5 text-zinc-600">•</span>
-            Interactive Web Apps
+            Unity & AR/VR
           </motion.p>
 
           {/* Divider */}
@@ -172,10 +176,10 @@ export function Hero() {
             className="mt-7 max-w-lg text-[0.875rem] leading-[1.8] text-zinc-300 text-pretty sm:mt-8 sm:text-[0.9375rem] md:text-base"
             style={{ textShadow: "0 1px 6px rgba(0,0,0,0.3)" }}
           >
-            I design and build immersive digital products — Unity games, AR/VR,
-            and full-stack web (React, Next.js, Ruby on Rails). I use
-            AI-assisted workflows to move from idea to production quickly, with
-            emphasis on performance, clear UX, and maintainable code.
+            I build production web products with React, Next.js, TypeScript, and
+            Ruby on Rails — using AI-assisted workflows to ship faster without
+            skipping review. Unity games and AR/VR are part of my toolkit when a
+            product needs immersive interaction.
           </motion.p>
 
           {/* Proof row */}
