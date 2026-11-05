@@ -20,8 +20,9 @@ export function Skills() {
             Skills
           </h2>
           <p className="mt-2 max-w-xl text-zinc-500">
-            Full-stack web, AI engineering, Ruby on Rails, and Unity when
-            immersion matters — tools I use to ship complete products.
+            Full-stack web (React, Next.js, TypeScript, Postgres/Supabase,
+            Vercel), Ruby on Rails, and Unity when immersion matters — tools I
+            use to ship and operate complete products.
           </p>
         </motion.div>
 

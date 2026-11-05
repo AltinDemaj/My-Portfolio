@@ -6,13 +6,13 @@ import { Target, Zap, Users } from "lucide-react";
 const highlights = [
   {
     icon: Target,
-    value: "Performance",
-    label: "Optimized games, 20%+ frame rate gains",
+    value: "End-to-end",
+    label: "Full-stack products from UI to Postgres & deploy",
   },
   {
     icon: Zap,
-    value: "Ship faster",
-    label: "AI engineering in production products",
+    value: "Ownership",
+    label: "Monitoring, release guards, security tests in prod",
   },
   {
     icon: Users,
@@ -22,6 +22,9 @@ const highlights = [
 ];
 
 const experienceBullets = [
+  "Built and operate Marketi Juaj end to end: Next.js/React/TypeScript UI, Supabase Postgres RPCs + RLS, checkout, invoice OCR, ATK fiscalization work, subscriptions, owner PWA, and weighing-scale support.",
+  "Own production reliability for that SaaS — health/uptime checks, staged Vercel promote with safety guards, and security hardening covered by automated tests.",
+  "Ship full-stack web products with React, Next.js, TypeScript, Postgres, and Ruby on Rails when the stack calls for it.",
   "Developed immersive 2D and 3D games using Unity, with a focus on innovative gameplay and visuals.",
   "Collaborated with cross-functional teams to design and implement features aligned with project vision.",
   "Optimized game performance — identified and resolved bottlenecks for significant frame rate improvements across platforms.",
@@ -53,14 +56,15 @@ export function About() {
               Experience
             </h2>
             <p className="mt-4 text-sm leading-relaxed text-zinc-400 text-pretty break-words sm:text-base">
-              Full-stack and AI engineer leading with React, Next.js,
-              TypeScript, and Ruby on Rails — building intelligent product
-              features with disciplined architecture and code review. Unity and
-              AR/VR are a strong secondary focus for games and immersive
-              prototypes.
+              Full-stack engineer who ships products end to end — React/Next.js
+              TypeScript frontends, Postgres/Supabase APIs, and production
+              ownership (monitoring, release promote guards, security tests).
+              Flagship case study: Marketi Juaj, a multi-business POS SaaS.
+              Unity and AR/VR remain a strong secondary focus for games and
+              immersive prototypes.
             </p>
             <ul className="mt-6 space-y-2 text-sm text-zinc-500">
-              {experienceBullets.slice(0, 5).map((bullet, i) => (
+              {experienceBullets.slice(0, 6).map((bullet, i) => (
                 <li key={i} className="flex gap-2">
                   <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-zinc-600" />
                   <span>{bullet}</span>
