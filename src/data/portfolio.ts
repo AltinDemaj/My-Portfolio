@@ -123,7 +123,7 @@ export const projects: Project[] = [
     id: "marketi-juaj-pos",
     title: "Marketi Juaj — Multi-business POS SaaS",
     description:
-      "Flagship full-stack product I design, ship, and operate end to end: a multi-business POS SaaS (23 business types in the live schema — market, restaurant/cafe/pizzeria, wholesale, boutique, pharmacy, hotel, and more) with React/Next.js cashier UI, Supabase Postgres APIs, atomic checkout, supplier invoice OCR, Kosovo ATK fiscalization work, online subscriptions, owner PWA, weighing-scale support, health/uptime monitoring, staged release promote with safety guards, and security hardening covered by automated tests.",
+      "Flagship full-stack product I design, ship, and operate end to end: a multi-business POS SaaS (market, restaurant/cafe/pizzeria, wholesale, boutique, pharmacy, hotel, and more) with React/Next.js cashier UI, Supabase Postgres APIs, atomic checkout, supplier invoice OCR, Kosovo ATK fiscalization work, online subscriptions, owner PWA, weighing-scale support, health/uptime monitoring, staged release promote with safety guards, and security hardening covered by automated tests.",
     category: "Web",
     tech: ["Next.js", "React", "TypeScript", "Supabase", "PostgreSQL", "Vercel"],
     image: "/images/projects/marketi-juaj-pos-hero.png",
@@ -134,7 +134,7 @@ export const projects: Project[] = [
     ctaLabel: "Marketi Juaj POS System",
     modalHighlights: [
       "End-to-end ownership: Next.js/React/TypeScript frontends + Supabase Postgres RPCs, RLS, and real-time APIs on Vercel",
-      "Multi-business POS: 23 business types, barcode/search checkout, VAT tender flows, and weighing-scale (peshorja) support",
+      "Multi-business POS: barcode/search checkout, VAT tender flows, and weighing-scale (peshorja) support",
       "Supplier invoice OCR in-browser, Kosovo ATK/SEF fiscalization adapters, and Paysera subscription billing",
       "Production ops: owner PWA, /api/health + uptime watchdog, staging→production promote guards, security hardening with tests",
     ],
@@ -873,7 +873,7 @@ export const resumeData = {
       title: "Marketi Juaj — Multi-business POS SaaS",
       category: "Web / Full-stack product",
       description:
-        "Founder-built POS SaaS shipped end to end on Next.js, React, TypeScript, Supabase/Postgres, and Vercel: 23 business types, checkout, invoice OCR, ATK fiscalization work, subscriptions, owner PWA, weighing-scale support, health monitoring, release promote guards, and security hardening with tests.",
+        "Founder-built POS SaaS shipped end to end on Next.js, React, TypeScript, Supabase/Postgres, and Vercel: multi-business checkout, invoice OCR, ATK fiscalization work, subscriptions, owner PWA, weighing-scale support, health monitoring, release promote guards, and security hardening with tests.",
     },
     {
       title: "Minions vs Bloons",
