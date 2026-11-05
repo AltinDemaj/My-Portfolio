@@ -121,11 +121,11 @@ export const confidentialProject = {
 export const projects: Project[] = [
   {
     id: "marketi-juaj-pos",
-    title: "Marketi Juaj — Retail POS",
+    title: "Marketi Juaj — Multi-business POS SaaS",
     description:
-      "Browser-based register for Balkan retailers: Albanian-language cashier UI with barcode or keyboard search, category product grid, and a live ticket with per-line quantity, weight-based items, and VAT breakdown. Staff complete checkout from desktop, tablet, or phone — built for counter speed with scanner, scale, and receipt printer workflows.",
+      "Flagship full-stack product I design, ship, and operate end to end: a multi-business POS SaaS (23 business types in the live schema — market, restaurant/cafe/pizzeria, wholesale, boutique, pharmacy, hotel, and more) with React/Next.js cashier UI, Supabase Postgres APIs, atomic checkout, supplier invoice OCR, Kosovo ATK fiscalization work, online subscriptions, owner PWA, weighing-scale support, health/uptime monitoring, staged release promote with safety guards, and security hardening covered by automated tests.",
     category: "Web",
-    tech: ["Next.js", "TypeScript", "PostgreSQL", "Real-time APIs"],
+    tech: ["Next.js", "React", "TypeScript", "Supabase", "PostgreSQL", "Vercel"],
     image: "/images/projects/marketi-juaj-pos-hero.png",
     thumbnailObjectPosition: "center",
     liveUrl: MARKETI_JUAJ_POS_URL,
@@ -133,10 +133,10 @@ export const projects: Project[] = [
     embedType: "site",
     ctaLabel: "Marketi Juaj POS System",
     modalHighlights: [
-      "Scan or search (F2) to add products; category filters for fast browsing at the register",
-      "Hold tickets, adjust quantities, and support weighted produce on the same sale",
-      "Subtotal, VAT, and pay flow tuned for in-store checkout — not marketplace admin",
-      "Runs in the browser on counter hardware; pairs with barcode and thermal printer setups",
+      "End-to-end ownership: Next.js/React/TypeScript frontends + Supabase Postgres RPCs, RLS, and real-time APIs on Vercel",
+      "Multi-business POS: 23 business types, barcode/search checkout, VAT tender flows, and weighing-scale (peshorja) support",
+      "Supplier invoice OCR in-browser, Kosovo ATK/SEF fiscalization adapters, and Paysera subscription billing",
+      "Production ops: owner PWA, /api/health + uptime watchdog, staging→production promote guards, security hardening with tests",
     ],
     screenshotGallery: [
       {
@@ -710,7 +710,7 @@ export const services: Service[] = [
     id: "1",
     title: "Web Development",
     description:
-      "Production web apps with React, Next.js, TypeScript, and Ruby on Rails — from MVP to launch.",
+      "Production web apps with React, Next.js, TypeScript, Postgres/Supabase, and Ruby on Rails — owned end to end from APIs to UI and deploy.",
     icon: "Globe",
   },
   {
@@ -735,7 +735,7 @@ export const services: Service[] = [
 
 export const siteOwner = {
   name: "Altin Demaj",
-  title: "Full-Stack & AI Engineer | React & Next.js | Ruby on Rails",
+  title: "Full-Stack & AI Engineer | React · Next.js · TypeScript · Postgres",
   location: "Prishtine, Kosovo",
   email: "altindemaj.dev@gmail.com",
   phone: "+38349405430",
@@ -748,7 +748,7 @@ export const resumeData = {
   summary:
     "Full-stack and AI engineer with 7+ years shipping production web apps, APIs, and intelligent product features. I lead with React, Next.js, and TypeScript, backed by Ruby on Rails and Node when the stack calls for it — integrating AI capabilities into real user flows with solid architecture, testing, and review.",
   summarySecondary:
-    "Recent work includes retail POS software, competitive PC tooling (BoostX), choreographer portfolios, and a Poki-published multiplayer tower-defense game. I also build Unity games and AR/VR experiences as a secondary specialty — multiplayer systems, festival activations, and immersive prototypes.",
+    "Recent work includes Marketi Juaj — a full-stack multi-business POS SaaS I ship and operate in production (React/Next.js, TypeScript, Supabase/Postgres, Vercel) — plus competitive PC tooling (BoostX), choreographer portfolios, and a Poki-published multiplayer tower-defense game. Unity games and AR/VR remain a secondary specialty for immersive products.",
   experienceYears: "7+ years",
   experience: [
     {
@@ -870,10 +870,10 @@ export const resumeData = {
         "Built and deployed robertnuha.com — a performance archive and professional CV for NOA Dance Theatre Co., with premiere spotlights and booking contact.",
     },
     {
-      title: "Marketi Juaj — Retail POS",
-      category: "Web / Retail",
+      title: "Marketi Juaj — Multi-business POS SaaS",
+      category: "Web / Full-stack product",
       description:
-        "Point-of-sale surface for in-store checkout: fast product lookup, ticket building, and sale completion for retail staff.",
+        "Founder-built POS SaaS shipped end to end on Next.js, React, TypeScript, Supabase/Postgres, and Vercel: 23 business types, checkout, invoice OCR, ATK fiscalization work, subscriptions, owner PWA, weighing-scale support, health monitoring, release promote guards, and security hardening with tests.",
     },
     {
       title: "Minions vs Bloons",
@@ -906,7 +906,7 @@ export const resumeData = {
     "BoostX",
     "Robert Nuha — Portfolio",
     "Minions vs Bloons",
-    "Marketi Juaj — Retail POS",
+    "Marketi Juaj — Multi-business POS SaaS",
     "Zombie Crusher",
     "Sunny Hill Festival AR Experience",
     "Room Planner",

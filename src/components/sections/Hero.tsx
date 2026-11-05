@@ -11,8 +11,8 @@ const UNITY_GIF_PATH = "/unity-editor.gif";
 
 const BADGES = [
   { icon: Code2, label: "Full-Stack Web" },
-  { icon: Layers, label: "React · Next.js" },
-  { icon: Sparkles, label: "AI Engineer" },
+  { icon: Layers, label: "React · Next.js · TS" },
+  { icon: Sparkles, label: "Postgres · APIs" },
   { icon: Gamepad2, label: "Unity & AR/VR" },
 ] as const;
 
@@ -100,9 +100,9 @@ export function Hero() {
                 className="inline-flex items-center gap-1.5 rounded-full border border-zinc-600/40 bg-black/40 px-3 py-1 text-[12px] font-medium text-zinc-300 backdrop-blur-md"
               >
                 <Icon
-                  className={`h-3 w-3 ${label === "AI Engineer" ? "text-amber-400/80" : "text-zinc-400"}`}
+                  className={`h-3 w-3 ${label === "Postgres · APIs" ? "text-amber-400/80" : "text-zinc-400"}`}
                 />
-                {label === "AI Engineer" ? (
+                {label === "Postgres · APIs" ? (
                   <span className="bg-gradient-to-r from-amber-400/90 to-yellow-300/90 bg-clip-text text-transparent">
                     {label}
                   </span>
@@ -154,9 +154,9 @@ export function Hero() {
           >
             React · Next.js · TypeScript
             <span className="mx-2.5 text-zinc-600">•</span>
-            Ruby on Rails
+            Postgres · Supabase · Vercel
             <span className="mx-2.5 text-zinc-600">•</span>
-            AI Engineering
+            Ruby on Rails
             <span className="mx-2.5 text-zinc-600">•</span>
             Unity & AR/VR
           </motion.p>
@@ -177,10 +177,11 @@ export function Hero() {
             className="mt-7 max-w-lg text-[0.875rem] leading-[1.8] text-zinc-300 text-pretty sm:mt-8 sm:text-[0.9375rem] md:text-base"
             style={{ textShadow: "0 1px 6px rgba(0,0,0,0.3)" }}
           >
-            I build production web and AI products with React, Next.js,
-            TypeScript, and Ruby on Rails — shipping reliable features from APIs
-            to interfaces. Unity games and AR/VR are part of my toolkit when a
-            product needs immersive interaction.
+            I ship production products end to end — React/Next.js TypeScript
+            frontends, Postgres/Supabase backends, and real ownership in
+            production (health checks, release promote guards, security tests).
+            Flagship: Marketi Juaj POS SaaS. Unity and AR/VR when a product
+            needs immersive interaction.
           </motion.p>
 
           {/* Proof row */}

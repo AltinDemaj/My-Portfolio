@@ -21,7 +21,7 @@ const syne = Syne({
 export const metadata: Metadata = {
   title: "Altin Demaj | Full-Stack & AI Engineer · React & Next.js · Ruby on Rails",
   description:
-    "Altin Demaj is a full-stack and AI engineer building React, Next.js, Ruby on Rails, and AI-powered products — plus Unity and AR/VR for games and immersive work.",
+    "Altin Demaj ships full-stack products end to end — React, Next.js, TypeScript, Postgres/Supabase, Vercel — plus Ruby on Rails and Unity/AR/VR when the product needs it.",
   applicationName: "Altin Demaj Portfolio",
   keywords: [
     "Altin Demaj",
@@ -32,12 +32,16 @@ export const metadata: Metadata = {
     "Next.js Developer",
     "Ruby on Rails",
     "Next.js Portfolio",
+    "TypeScript",
+    "PostgreSQL",
+    "Supabase",
+    "Product Engineer Kosovo",
     "Game Developer Kosovo",
   ],
   openGraph: {
     title: "Altin Demaj | Full-Stack & AI Engineer · React & Next.js · Ruby on Rails",
     description:
-      "Portfolio of Altin Demaj — full-stack web apps, AI engineering, Ruby on Rails, Unity games, and AR/VR work.",
+      "Portfolio of Altin Demaj — full-stack product shipping (React/Next.js/TypeScript/Postgres), Marketi Juaj POS SaaS, Unity games, and AR/VR work.",
     type: "website",
     locale: "en_US",
   },
@@ -45,7 +49,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Altin Demaj | Full-Stack & AI Engineer · React & Next.js · Ruby on Rails",
     description:
-      "Portfolio of Altin Demaj — full-stack web apps, AI engineering, Ruby on Rails, Unity games, and AR/VR work.",
+      "Portfolio of Altin Demaj — full-stack product shipping (React/Next.js/TypeScript/Postgres), Marketi Juaj POS SaaS, Unity games, and AR/VR work.",
   },
 };
 
